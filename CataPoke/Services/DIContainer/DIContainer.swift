@@ -6,7 +6,11 @@ enum DIContainer {
         let container = Container()
 
         container
-            .register(RequestHandling.self) { _ in FakeRequestHandler() }
+            .register(RequestHandling.self) { _ in
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                return URLSessionRequestHandler(decoder: decoder)
+            }
             .inObjectScope(.container)
 
         return container

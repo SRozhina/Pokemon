@@ -1,3 +1,4 @@
+import Combine
 import UIKit
 
 /// Main view showing the list of Pokémon
@@ -12,9 +13,10 @@ import UIKit
 /// Not required, but feel free to improve/reorganize the ViewController however you like.
 class ListViewController: UIViewController {
     /// TODO, replace with your own `RequestHandler`
-    private let requestHandler: RequestHandling = FakeRequestHandler()
+    var requestHandler: RequestHandling?
 
     private var species: [Species] = []
+    private var subscriptions = Set<AnyCancellable>()
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -47,20 +49,15 @@ class ListViewController: UIViewController {
     }
 
     private func fetchSpecies() {
-        do {
-            // TODO Consider pagination
-            try requestHandler.request(route: .getSpeciesList(limit: 20, offset: 0)) { [weak self] (result: Result<SpeciesResponse, Error>) -> Void in
-                switch result {
-                case .success(let response):
-                    self?.didFetchSpecies(response: response)
-
-                case .failure:
-                    print("TODO handle network failures")
+        requestHandler?.request(route: .getSpeciesList(limit: 20, offset: 0))
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { [weak self] in
+                    self?.didFetchSpecies(response: $0)
                 }
-            }
-        } catch {
-            print("TODO handle request handling failures failures")
-        }
+            )
+            .store(in: &subscriptions)
     }
 
     private func didFetchSpecies(response: SpeciesResponse) {
