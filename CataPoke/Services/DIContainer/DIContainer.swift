@@ -19,6 +19,12 @@ enum DIContainer {
             }
             .inObjectScope(.container)
 
+        container
+            .register(ImageLoading.self) { _ in
+                ImageLoader()
+            }
+            .inObjectScope(.container)
+
         return container
     }
 }
