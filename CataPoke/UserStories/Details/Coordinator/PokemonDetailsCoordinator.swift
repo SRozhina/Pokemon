@@ -1,39 +1,39 @@
 import Swinject
 
-class PokemonGridCoordinator: Coordinator {
+class PokemonDetailsCoordinator: Coordinator {
 
     private let container: Container
-    private weak var output: PokemonGridCoordinatorOutput?
+    private let pokemon: Pokemon
+    private weak var output: PokemonDetailsCoordinatorOutput?
 
     private weak var pokemonDetailsModuleInput: PokemonDetailsModuleInput?
     private var pokemonDetailsCoordinator: PokemonDetailsCoordinatorInput?
 
     init(
         container: Container,
-        output: PokemonGridCoordinatorOutput
+        pokemon: Pokemon,
+        output: PokemonDetailsCoordinatorOutput?
     ) {
         self.container = container
+        self.pokemon = pokemon
         self.output = output
     }
 
     override func makeInitialViewController() throws -> UIViewController {
-        guard let view = container.resolve(IPokemonGridView.self),
+        guard let view = container.resolve(IPokemonDetailsView.self, argument: pokemon),
               let viewController = view as? UIViewController
         else {
-            throw PokemonGridModuleError.cannotBuildModule
+            throw PokemonDetailsModuleError.cannotBuildModule
         }
+        pokemonDetailsModuleInput = view.presenter
         view.presenter.moduleOutput = self
         let navigationController = UINavigationController(rootViewController: viewController)
         viewControllers = [navigationController]
 
         return navigationController
     }
-}
 
-extension PokemonGridCoordinator: PokemonGridCoordinatorInput { }
-
-extension PokemonGridCoordinator: PokemonGridModuleOutput {
-    func pokemonGridModule(_ module: PokemonGridModuleInput, didTapPokemon pokemon: Pokemon) {
+    private func openPokemon(_ pokemon: Pokemon) {
         let coordinator = PokemonDetailsCoordinator(
             container: container,
             pokemon: pokemon,
@@ -45,7 +45,20 @@ extension PokemonGridCoordinator: PokemonGridModuleOutput {
     }
 }
 
-extension PokemonGridCoordinator: PokemonDetailsCoordinatorOutput {
+extension PokemonDetailsCoordinator: PokemonDetailsCoordinatorInput { }
+
+extension PokemonDetailsCoordinator: PokemonDetailsModuleOutput {
+    func pokemonDetailsModule(_ module: PokemonDetailsModuleInput, didTapPokemon pokemon: Pokemon) {
+        openPokemon(pokemon)
+    }
+
+    func pokemonDetailsModuleDidClose(_ module: PokemonDetailsModuleInput) {
+        output?.pokemonDetailsCoordinatorDidClose(self)
+        pokemonDetailsModuleInput = nil
+    }
+}
+
+extension PokemonDetailsCoordinator: PokemonDetailsCoordinatorOutput {
     func pokemonDetailsCoordinatorDidClose(_ coordinator: PokemonDetailsCoordinatorInput) {
         dismiss()
         pokemonDetailsCoordinator = nil

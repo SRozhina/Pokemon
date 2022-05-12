@@ -26,6 +26,12 @@ class Coordinator: NSObject {
             present(viewController)
         }
     }
+
+    func dismiss() {
+        currentViewController?.dismiss(animated: true) {
+            _ = self.viewControllers.popLast()
+        }
+    }
 }
 
 extension Coordinator: UIAdaptivePresentationControllerDelegate {
