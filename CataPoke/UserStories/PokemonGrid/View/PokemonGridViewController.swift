@@ -209,7 +209,6 @@ extension PokemonGridViewController: IPokemonGridView {
             break
         }
         collectionViewDataSource.apply(snapshot)
-        collectionView.collectionViewLayout.invalidateLayout()
     }
 }
 

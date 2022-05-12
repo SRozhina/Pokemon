@@ -1,4 +1,5 @@
 protocol IPokemonGridPresenter: AnyObject, PokemonGridModuleInput {
+    var view: IPokemonGridView? { get set }
     var moduleOutput: PokemonGridModuleOutput? { get set }
 
     func setup()
