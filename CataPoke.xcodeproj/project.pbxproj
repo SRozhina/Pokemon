@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		45E2E30B282D0C54009EBE33 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E2E30A282D0C4C009EBE33 /* Localizable.strings */; };
 		45E2E30E282D0CBF009EBE33 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E30D282D0CBE009EBE33 /* Localization.swift */; };
+		45E2E315282D17A2009EBE33 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E314282D17A2009EBE33 /* DIContainer.swift */; };
 		CE4C9CAB2820167200FEA589 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C9CAA2820167200FEA589 /* AppDelegate.swift */; };
 		CE4C9CAD2820167200FEA589 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C9CAC2820167200FEA589 /* SceneDelegate.swift */; };
 		CE4C9CAF2820167200FEA589 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C9CAE2820167200FEA589 /* ListViewController.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		45E2E30A282D0C4C009EBE33 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		45E2E30D282D0CBE009EBE33 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		45E2E314282D17A2009EBE33 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		4F81FAFB64F154D1591FB9AC /* Pods-CataPoke.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CataPoke.debug.xcconfig"; path = "Target Support Files/Pods-CataPoke/Pods-CataPoke.debug.xcconfig"; sourceTree = "<group>"; };
 		AB098315C5688D07D373C237 /* Pods_CataPoke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CataPoke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEFDC978EC37B059911549D5 /* Pods-CataPoke.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CataPoke.release.xcconfig"; path = "Target Support Files/Pods-CataPoke/Pods-CataPoke.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		45E2E311282D141A009EBE33 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				45E2E313282D1793009EBE33 /* DIContainer */,
 				CE9303C128226EDC0057188E /* Models */,
 				CE9303C8282271730057188E /* Network */,
 			);
@@ -114,6 +117,14 @@
 				CE4C9CAA2820167200FEA589 /* AppDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		45E2E313282D1793009EBE33 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				45E2E314282D17A2009EBE33 /* DIContainer.swift */,
+			);
+			path = DIContainer;
 			sourceTree = "<group>";
 		};
 		AA8138E3C65F139DA45924C0 /* Pods */ = {
@@ -205,6 +216,7 @@
 				CE4C9CA42820167200FEA589 /* Frameworks */,
 				CE4C9CA52820167200FEA589 /* Resources */,
 				45E2E308282D09C4009EBE33 /* SwiftLint */,
+				55CE7C8C81E463716341826A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -298,6 +310,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftGen/bin/swiftgen\" config run --config swiftgen.yml\n";
 		};
+		55CE7C8C81E463716341826A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CataPoke/Pods-CataPoke-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CataPoke/Pods-CataPoke-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CataPoke/Pods-CataPoke-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		95100E57CBA7D8A26117C611 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -333,6 +362,7 @@
 				CE4C9CAF2820167200FEA589 /* ListViewController.swift in Sources */,
 				CE4C9CAB2820167200FEA589 /* AppDelegate.swift in Sources */,
 				CE9303C5282270F60057188E /* EvolutionChain.swift in Sources */,
+				45E2E315282D17A2009EBE33 /* DIContainer.swift in Sources */,
 				CE9303CA282271990057188E /* APIRoute.swift in Sources */,
 				CE9303D128227CDE0057188E /* ListCell.swift in Sources */,
 				CE9303CC2822741F0057188E /* RequestHandling.swift in Sources */,

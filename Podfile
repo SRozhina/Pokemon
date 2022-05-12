@@ -3,6 +3,7 @@ target 'CataPoke' do
 
   pod 'SwiftLint'
   pod 'SwiftGen'
+  pod 'Swinject'
 
 end
 
