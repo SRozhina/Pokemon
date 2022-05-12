@@ -3,6 +3,8 @@ import UIKit
 public enum Image {
     public static var pokemonPlaceholder = image(named: "pokemonPlaceholder")
 
+    public static var reload = systemImage(named: "arrow.clockwise")
+
     private static func image(named name: String) -> UIImage {
         let bundle = Bundle(for: BundleToken.self)
         guard let image = UIImage(named: name, in: bundle, compatibleWith: nil) else {

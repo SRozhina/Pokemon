@@ -1,44 +1,222 @@
 import UIKit
 
-class PokemonGridViewController: UIViewController {
+final class PokemonGridViewController: UIViewController {
 
     var presenter: IPokemonGridPresenter
+
+    private var viewModels: [PokemonGridViewModel] = []
+
+    private lazy var collectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout)
+        view.register(PokemonGridCell.self, forCellWithReuseIdentifier: PokemonGridCell.selfDescription)
+        view.register(LoadingGridFooterView.self, forCellWithReuseIdentifier: LoadingGridFooterView.selfDescription)
+        view.register(ErrorGridFooterView.self, forCellWithReuseIdentifier: ErrorGridFooterView.selfDescription)
+
+        view.refreshControl = UIRefreshControl()
+        view.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        view.delegate = self
+        return view
+    }()
+
+    private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
+        return UICollectionViewCompositionalLayout { section, _ in
+            guard let section = Section(rawValue: section) else {
+                fatalError("UnsupportedSection")
+            }
+            switch section {
+            case .main:
+                let itemSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(Constants.Item.width),
+                    heightDimension: .fractionalWidth(Constants.Item.height)
+                )
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+                item.contentInsets = NSDirectionalEdgeInsets(
+                    top: Space.single,
+                    leading: Space.single,
+                    bottom: Space.single,
+                    trailing: Space.single
+                )
+
+                let groupSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(Constants.Group.width),
+                    heightDimension: .fractionalWidth(Constants.Group.height)
+                )
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+                return NSCollectionLayoutSection(group: group)
+
+            case .footer:
+                let footerItemSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(Constants.Footer.width),
+                    heightDimension: .estimated(Constants.Footer.height)
+                )
+                let footerItem = NSCollectionLayoutItem(layoutSize: footerItemSize)
+
+                let groupSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(Constants.Footer.width),
+                    heightDimension: .estimated(Constants.Footer.height)
+                )
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [footerItem])
+
+                return NSCollectionLayoutSection(group: group)
+            }
+        }
+    }()
+
+    private lazy var collectionViewDataSource = UICollectionViewDiffableDataSource<Section, Item>(
+        collectionView: collectionView
+    ) { collectionView, indexPath, item in
+        switch item {
+        case let .viewModel(viewModel):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PokemonGridCell.selfDescription,
+                for: indexPath
+            ) as? PokemonGridCell else {
+                return UICollectionViewCell()
+            }
+            cell.title = viewModel.name
+            cell.image = viewModel.image
+            return cell
+
+        case .footerLoading:
+            return collectionView.dequeueReusableCell(
+                withReuseIdentifier: LoadingGridFooterView.selfDescription,
+                for: indexPath
+            )
+
+        case .footerError:
+            return collectionView.dequeueReusableCell(
+                withReuseIdentifier: ErrorGridFooterView.selfDescription,
+                for: indexPath
+            )
+        }
+    }
 
     init(presenter: IPokemonGridPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
-
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("PokemonGridViewController could not be initialized via stroyboard")
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // TODO initial setup
+        view.backgroundColor = .green
+        title = "POKéMON"
+        setupView()
+        setupConstrains()
+    }
+
+    private func setupView() {
+        view.backgroundColor = UIColor.systemBackground
+        [
+            collectionView,
+        ].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
+        }
+        collectionView.dataSource = collectionViewDataSource
+
+        presenter.setup()
+    }
+
+    private func setupConstrains() {
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+    }
+
+    @objc
+    private func didPullToRefresh() {
+        presenter.didPullToRefresh()
+    }
+}
+
+extension PokemonGridViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        presenter.didScrollTo(index: indexPath.row)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let section = Section(rawValue: indexPath.section) else { return }
+        switch section {
+        case .main:
+            guard indexPath.row < viewModels.count else { return }
+            let viewModel = viewModels[indexPath.row]
+            presenter.didTap(on: viewModel)
+
+        case .footer:
+            guard collectionView.cellForItem(at: indexPath) is ErrorGridFooterView else { return }
+            presenter.didTapOnReloadPage()
+        }
     }
 }
 
 extension PokemonGridViewController: IPokemonGridView {
-
     func showLoading() {
         // TODO show activity indicator
     }
-
     func hideLoading() {
         // TODO hide activity indicator
     }
-
     func showError() {
         // TODO show error
     }
-
     func hideError() {
         // TODO hide error
     }
 
     func set(viewModels: [PokemonGridViewModel], footer: GridFooterViewModel?) {
-        // TODO update collection with view models
+        collectionView.refreshControl?.endRefreshing()
+        self.viewModels = viewModels
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        snapshot.appendSections(Section.allCases)
+        snapshot.appendItems(viewModels.map { Item.viewModel($0) }, toSection: Section.main)
+        switch footer {
+        case .loading:
+            snapshot.appendItems([.footerLoading], toSection: Section.footer)
+
+        case .error:
+            snapshot.appendItems([.footerError], toSection: Section.footer)
+
+        case .none:
+            break
+        }
+        collectionViewDataSource.apply(snapshot)
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+}
+
+private extension PokemonGridViewController {
+    enum Section: Int, CaseIterable {
+        case main
+        case footer
+    }
+
+    enum Item: Hashable {
+        case viewModel(PokemonGridViewModel)
+        case footerLoading
+        case footerError
+    }
+}
+
+private extension PokemonGridViewController {
+    enum Constants {
+        enum Item {
+            static let width: CGFloat = 1 / 3
+            static let height: CGFloat = 1 / 2
+        }
+        enum Group {
+            static let width: CGFloat = 1
+            static let height: CGFloat = 1 / 2
+        }
+        enum Footer {
+            static let width: CGFloat = 1
+            static let height: CGFloat = 60
+        }
     }
 }
