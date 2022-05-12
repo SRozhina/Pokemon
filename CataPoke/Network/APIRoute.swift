@@ -16,6 +16,7 @@ enum APIRoute {
         case .getSpecies(let url),
              .getEvolutionChain(let url):
             return url
+
         case .getSpeciesList:
             return URL(string: baseURLString + "pokemon-species")
         }
@@ -28,6 +29,7 @@ enum APIRoute {
                 URLQueryItem(name: "limit", value: String(limit)),
                 URLQueryItem(name: "offset", value: String(offset))
             ]
+
         default:
             return []
         }

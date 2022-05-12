@@ -12,6 +12,7 @@ class FakeRequestHandler: RequestHandling {
             if let example = SpeciesResponse.example(count: limit) as? T {
                 completion(.success(example))
             }
+
         default:
             completion(.failure(FakeRequestError()))
         }
