@@ -1,8 +1,8 @@
 strings:
-- inputs: CataPoke/Localization/Localizable.strings
+- inputs: CataPoke/Resources/Localization/Localizable.strings
   outputs:
     templatePath: SwiftGenTemplates/LocalizableStrings.stencil
-    output: CataPoke/Localization/Localization.swift
+    output: CataPoke/Resources/Localization/Localization.swift
     params:
         enumName: Localization
         publicAccess: 1
