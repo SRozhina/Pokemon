@@ -9,12 +9,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: windowScene)
-        let viewController = ListViewController()
-        viewController.pokemonsService = container.resolve(IPokemonsService.self)
+        guard let view = container.resolve(IPokemonGridView.self),
+              let viewController = view as? UIViewController else {
+            fatalError("Cannot create first app view")
+        }
+        view.presenter.moduleOutput = self
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.prefersLargeTitles = true
         window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()
     }
+}
+
+extension SceneDelegate: PokemonGridModuleOutput {
+    func pokemonGridModule(_ module: PokemonGridModuleInput, didTapPokemon: SpeciesResponse) { }
 }
