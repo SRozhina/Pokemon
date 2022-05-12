@@ -20,9 +20,13 @@
 		CE9303D128227CDE0057188E /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9303D028227CDE0057188E /* ListCell.swift */; };
 		CE9303D42822A92F0057188E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9303D32822A92F0057188E /* DetailsViewController.swift */; };
 		CE9303D92822D1D30057188E /* SpeciesDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9303D82822D1D30057188E /* SpeciesDetails.swift */; };
+		DD96BE31C68FF27F7B680A03 /* Pods_CataPoke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB098315C5688D07D373C237 /* Pods_CataPoke.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F81FAFB64F154D1591FB9AC /* Pods-CataPoke.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CataPoke.debug.xcconfig"; path = "Target Support Files/Pods-CataPoke/Pods-CataPoke.debug.xcconfig"; sourceTree = "<group>"; };
+		AB098315C5688D07D373C237 /* Pods_CataPoke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CataPoke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEFDC978EC37B059911549D5 /* Pods-CataPoke.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CataPoke.release.xcconfig"; path = "Target Support Files/Pods-CataPoke/Pods-CataPoke.release.xcconfig"; sourceTree = "<group>"; };
 		CE4C9CA72820167200FEA589 /* CataPoke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CataPoke.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4C9CAA2820167200FEA589 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE4C9CAC2820167200FEA589 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,18 +50,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD96BE31C68FF27F7B680A03 /* Pods_CataPoke.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184C62093601A134C74AD8CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB098315C5688D07D373C237 /* Pods_CataPoke.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA8138E3C65F139DA45924C0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F81FAFB64F154D1591FB9AC /* Pods-CataPoke.debug.xcconfig */,
+				AEFDC978EC37B059911549D5 /* Pods-CataPoke.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CE4C9C9E2820167200FEA589 = {
 			isa = PBXGroup;
 			children = (
 				CE9303D52822D0200057188E /* README.md */,
 				CE4C9CA92820167200FEA589 /* CataPoke */,
 				CE4C9CA82820167200FEA589 /* Products */,
+				AA8138E3C65F139DA45924C0 /* Pods */,
+				184C62093601A134C74AD8CC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,9 +153,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE4C9CD12820167300FEA589 /* Build configuration list for PBXNativeTarget "CataPoke" */;
 			buildPhases = (
+				95100E57CBA7D8A26117C611 /* [CP] Check Pods Manifest.lock */,
 				CE4C9CA32820167200FEA589 /* Sources */,
 				CE4C9CA42820167200FEA589 /* Frameworks */,
 				CE4C9CA52820167200FEA589 /* Resources */,
+				45E2E308282D09C4009EBE33 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -186,6 +212,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		45E2E308282D09C4009EBE33 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Run SwiftLint script with autocorrect\"\n\nif [ ${CONFIGURATION} != \"Debug\" ]; then\n    echo \"Not debug configuration, skipping...\"\n    exit 0\nfi\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect --format\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		95100E57CBA7D8A26117C611 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CataPoke-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE4C9CA32820167200FEA589 /* Sources */ = {
@@ -336,6 +405,7 @@
 		};
 		CE4C9CD22820167300FEA589 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F81FAFB64F154D1591FB9AC /* Pods-CataPoke.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -362,6 +432,7 @@
 		};
 		CE4C9CD32820167300FEA589 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEFDC978EC37B059911549D5 /* Pods-CataPoke.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

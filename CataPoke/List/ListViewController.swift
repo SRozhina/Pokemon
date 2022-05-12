@@ -53,6 +53,7 @@ class ListViewController: UIViewController {
                 switch result {
                 case .success(let response):
                     self?.didFetchSpecies(response: response)
+
                 case .failure:
                     print("TODO handle network failures")
                 }
@@ -70,7 +71,7 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return species.count
+        species.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
