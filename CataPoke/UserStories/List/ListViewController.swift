@@ -13,7 +13,7 @@ import UIKit
 /// Not required, but feel free to improve/reorganize the ViewController however you like.
 class ListViewController: UIViewController {
     /// TODO, replace with your own `RequestHandler`
-    var requestHandler: RequestHandling?
+    var pokemonsService: IPokemonsService?
 
     private var species: [Species] = []
     private var subscriptions = Set<AnyCancellable>()
@@ -49,7 +49,7 @@ class ListViewController: UIViewController {
     }
 
     private func fetchSpecies() {
-        requestHandler?.request(route: .getSpeciesList(limit: 20, offset: 0))
+        pokemonsService?.fetchPokemonsList(batch: 20, from: 0)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in },

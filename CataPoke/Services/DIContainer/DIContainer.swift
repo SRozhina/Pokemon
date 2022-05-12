@@ -13,6 +13,12 @@ enum DIContainer {
             }
             .inObjectScope(.container)
 
+        container
+            .register(IPokemonsService.self) { resolver in
+                PokemonsService(requestHandler: resolver.resolve(RequestHandling.self)!)
+            }
+            .inObjectScope(.container)
+
         return container
     }
 }

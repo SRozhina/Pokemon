@@ -10,7 +10,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let window = UIWindow(windowScene: windowScene)
         let viewController = ListViewController()
-        viewController.requestHandler = container.resolve(RequestHandling.self)
+        viewController.pokemonsService = container.resolve(IPokemonsService.self)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.prefersLargeTitles = true
         window.rootViewController = navigationController
