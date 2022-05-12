@@ -1,2 +1,11 @@
 "grid.title" = "POKéMON";
 "grid.reload" = "Reload pokemons";
+
+"details.special.baby" = "baby";
+"details.special.legendary" = "legendary";
+"details.special.mythical" = "mythical";
+
+"details.characteristics.capture_rate" = "Capture rate";
+"details.characteristics.hapiness_rate.title" = "Hapiness";
+"details.characteristics.hapiness_rate.value" = "happy";
+"details.characteristics.gender.title" = "Gender";

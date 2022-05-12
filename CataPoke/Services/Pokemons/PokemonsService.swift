@@ -14,8 +14,10 @@ final class PokemonsService: IPokemonsService {
             .eraseToAnyPublisher()
     }
 
-    func fetchPokemonDetails(url: URL) -> AnyPublisher<SpeciesDetails, Error> {
+    func fetchPokemonDetails(url: URL) -> AnyPublisher<PokemonDetails, Error> {
         requestHandler.request(route: .getSpecies(url))
+            .map(PokemonDetailsFactory.makeDetails)
+            .eraseToAnyPublisher()
     }
 
     func fetchEvolutionChain(url: URL) -> AnyPublisher<EvolutionChain, Error> {
