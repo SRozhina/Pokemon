@@ -30,7 +30,7 @@ class PokemonGridCoordinator: Coordinator {
 extension PokemonGridCoordinator: PokemonGridCoordinatorInput { }
 
 extension PokemonGridCoordinator: PokemonGridModuleOutput {
-    func pokemonGridModule(_ module: PokemonGridModuleInput, didTapPokemon: SpeciesResponse) {
+    func pokemonGridModule(_ module: PokemonGridModuleInput, didTapPokemon: Pokemon) {
         // TODO open details
     }
 }

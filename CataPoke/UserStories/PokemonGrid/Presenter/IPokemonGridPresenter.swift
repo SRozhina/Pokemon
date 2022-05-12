@@ -9,5 +9,5 @@ protocol IPokemonGridPresenter: AnyObject, PokemonGridModuleInput {
     func didScrollTo(index: Int)
 
     func didTap(on: PokemonGridViewModel)
-    func didTapOnReloadBatch()
+    func didTapOnReloadPage()
 }
