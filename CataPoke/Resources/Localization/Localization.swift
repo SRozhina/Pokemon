@@ -4,6 +4,8 @@ import Foundation
 public enum Localization {
 
     public enum Grid {
+        /// Reload pokemons
+        public static let reload = localize("grid.reload")
         /// POKéMON
         public static let title = localize("grid.title")
     }

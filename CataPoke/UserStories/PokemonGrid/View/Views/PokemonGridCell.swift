@@ -28,7 +28,7 @@ final class PokemonGridCell: UICollectionViewCell, SelfDescriptive {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .lightGray
+        label.textColor = .systemGroupedBackground
         label.numberOfLines = 2
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
         return label
@@ -54,7 +54,12 @@ final class PokemonGridCell: UICollectionViewCell, SelfDescriptive {
     }
 
     private func setupView() {
-        [imageView, gradientView, titleLabel].forEach {
+        backgroundColor = .systemGray6
+        [
+            imageView,
+            gradientView,
+            titleLabel,
+        ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
         }
@@ -91,8 +96,8 @@ private extension PokemonGridCell {
         static let cornerRadius: CGFloat = 20
 
         enum Gradient {
-            static let location: [Float] = [0, 0.85]
-            static let colors = [UIColor.clear, UIColor.black]
+            static let location: [Float] = [0, 0.75]
+            static let colors = [UIColor.clear, UIColor.systemGray]
         }
     }
 }

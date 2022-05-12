@@ -92,6 +92,15 @@ final class PokemonGridViewController: UIViewController {
         }
     }
 
+    private lazy var activityIndicator = UIActivityIndicatorView(style: .medium)
+
+    private lazy var errorView: GridErrorView = {
+        let view = GridErrorView()
+        view.delegate = self
+        view.isHidden = true
+        return view
+    }()
+
     init(presenter: IPokemonGridPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -112,6 +121,8 @@ final class PokemonGridViewController: UIViewController {
         view.backgroundColor = UIColor.systemBackground
         [
             collectionView,
+            activityIndicator,
+            errorView,
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
@@ -127,6 +138,14 @@ final class PokemonGridViewController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+
+            errorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
 
@@ -158,16 +177,19 @@ extension PokemonGridViewController: UICollectionViewDelegate {
 
 extension PokemonGridViewController: IPokemonGridView {
     func showLoading() {
-        // TODO show activity indicator
+        activityIndicator.startAnimating()
     }
+
     func hideLoading() {
-        // TODO hide activity indicator
+        activityIndicator.stopAnimating()
     }
+
     func showError() {
-        // TODO show error
+        errorView.isHidden = false
     }
+
     func hideError() {
-        // TODO hide error
+        errorView.isHidden = true
     }
 
     func set(viewModels: [PokemonGridViewModel], footer: GridFooterViewModel?) {
@@ -188,6 +210,13 @@ extension PokemonGridViewController: IPokemonGridView {
         }
         collectionViewDataSource.apply(snapshot)
         collectionView.collectionViewLayout.invalidateLayout()
+    }
+}
+
+extension PokemonGridViewController: GridErrorViewDelegate {
+
+    func gridErrorViewDidTapButton(_ view: GridErrorView) {
+        presenter.didTapReload()
     }
 }
 
