@@ -20,8 +20,14 @@ enum DIContainer {
             .inObjectScope(.container)
 
         container
-            .register(ImageLoading.self) { _ in
-                ImageLoader()
+            .register(ImageCache.self) { _ in
+                DefaultImageCache()
+            }
+            .inObjectScope(.container)
+
+        container
+            .register(ImageLoading.self) { resolver in
+                ImageLoader(cache: resolver.resolve(ImageCache.self)!)
             }
             .inObjectScope(.container)
 

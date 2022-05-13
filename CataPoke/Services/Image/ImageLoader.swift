@@ -4,10 +4,14 @@ import UIKit
 final class ImageLoader: ImageLoading {
 
     private let session: URLSession
-    private let cache: ImageCache = DefaultImageCache()
+    private let cache: ImageCache
 
-    init(session: URLSession = .shared) {
+    init(
+        cache: ImageCache,
+        session: URLSession = .shared
+    ) {
         self.session = session
+        self.cache = cache
     }
 
     func loadImage(from url: URL) -> AnyPublisher<UIImage?, Never> {
