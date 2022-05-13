@@ -1,4 +1,5 @@
 import Swinject
+import UIKit
 
 class PokemonDetailsCoordinator: Coordinator {
 
@@ -52,6 +53,14 @@ extension PokemonDetailsCoordinator: PokemonDetailsModuleOutput {
         openPokemon(pokemon)
     }
 
+    func pokemonDetailsModule(_ module: PokemonDetailsModuleInput, didFetchEvolutionUrl url: URL) {
+        guard let view = container.resolve(IPokemonEvolutionGridView.self, argument: url),
+              let viewController = view as? UIViewController
+        else { return }
+        view.presenter.moduleOutput = self
+        pokemonDetailsModuleInput?.showEvolutionGrid(viewController)
+    }
+
     func pokemonDetailsModuleDidClose(_ module: PokemonDetailsModuleInput) {
         output?.pokemonDetailsCoordinatorDidClose(self)
         pokemonDetailsModuleInput = nil
@@ -62,5 +71,11 @@ extension PokemonDetailsCoordinator: PokemonDetailsCoordinatorOutput {
     func pokemonDetailsCoordinatorDidClose(_ coordinator: PokemonDetailsCoordinatorInput) {
         dismiss()
         pokemonDetailsCoordinator = nil
+    }
+}
+
+extension PokemonDetailsCoordinator: PokemonEvolutionGridModuleOutput {
+    func pokemonEvolutionGridModule(_ module: PokemonEvolutionGridModuleInput, didTapPokemon pokemon: Pokemon) {
+        openPokemon(pokemon)
     }
 }

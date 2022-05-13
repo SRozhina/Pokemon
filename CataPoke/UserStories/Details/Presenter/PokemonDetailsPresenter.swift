@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import UIKit
 
 class PokemonDetailsPresenter {
 
@@ -48,6 +49,7 @@ extension PokemonDetailsPresenter: IPokemonDetailsPresenter {
                 receiveCompletion: { _ in },
                 receiveValue: { [weak self] details in
                     guard let self = self else { return }
+                    self.moduleOutput?.pokemonDetailsModule(self, didFetchEvolutionUrl: details.evolutionUrl)
                     let viewModel = PokemonDetailsViewModelFactory.makeViewModel(details, image: self.pokemon.image)
                     self.view?.set(viewModel: viewModel)
                 })
@@ -56,6 +58,10 @@ extension PokemonDetailsPresenter: IPokemonDetailsPresenter {
         if pokemon.image == nil {
             loadImage()
         }
+    }
+
+    func showEvolutionGrid(_ grid: UIViewController) {
+        view?.showEvolutionGrid(grid)
     }
 
     func didTapClose() {

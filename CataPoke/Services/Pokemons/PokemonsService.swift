@@ -10,7 +10,9 @@ final class PokemonsService: IPokemonsService {
 
     func fetchPokemonsPage(pageSize: Int, from index: Int) -> AnyPublisher<PokemonPage, Error> {
         requestHandler.request(route: .getSpeciesList(limit: pageSize, offset: index))
-            .map { PokemonPage(total: $0.count, pokemons: PokemonFactory.makePokemons(from: $0)) }
+            .map { (response: SpeciesResponse) in
+                PokemonPage(total: response.count, pokemons: PokemonFactory.makePokemons(from: response.results))
+            }
             .eraseToAnyPublisher()
     }
 

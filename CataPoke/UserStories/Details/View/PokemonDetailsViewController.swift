@@ -90,4 +90,10 @@ extension PokemonDetailsViewController: IPokemonDetailsView {
             characteristicsStackView.addArrangedSubview(view)
         }
     }
+
+    func showEvolutionGrid(_ grid: UIViewController) {
+        addChild(grid)
+        contentStackView.addArrangedSubview(grid.view)
+        grid.didMove(toParent: self)
+    }
 }

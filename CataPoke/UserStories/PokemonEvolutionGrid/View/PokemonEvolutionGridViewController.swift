@@ -9,6 +9,7 @@ class PokemonEvolutionGridViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout)
         view.register(PokemonGridCell.self, forCellWithReuseIdentifier: PokemonGridCell.selfDescription)
+        view.bounces = false
         view.delegate = self
         return view
     }()
