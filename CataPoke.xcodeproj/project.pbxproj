@@ -10,6 +10,7 @@
 		4539615C282EF6AF009F7328 /* NetworkRequestHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615B282EF6AF009F7328 /* NetworkRequestHandling.swift */; };
 		4539615E282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615D282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift */; };
 		45396160282EF7E0009F7328 /* NetworkRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615F282EF7E0009F7328 /* NetworkRequestError.swift */; };
+		45396168282EF81A009F7328 /* CataPokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396167282EF81A009F7328 /* CataPokeTests.swift */; };
 		45E2E30B282D0C54009EBE33 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E2E30A282D0C4C009EBE33 /* Localizable.strings */; };
 		45E2E30E282D0CBF009EBE33 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E30D282D0CBE009EBE33 /* Localization.swift */; };
 		45E2E315282D17A2009EBE33 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E314282D17A2009EBE33 /* DIContainer.swift */; };
@@ -74,10 +75,22 @@
 		DD96BE31C68FF27F7B680A03 /* Pods_CataPoke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB098315C5688D07D373C237 /* Pods_CataPoke.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		45396169282EF81A009F7328 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE4C9C9F2820167200FEA589 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE4C9CA62820167200FEA589;
+			remoteInfo = CataPoke;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4539615B282EF6AF009F7328 /* NetworkRequestHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestHandling.swift; sourceTree = "<group>"; };
 		4539615D282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkRequestHandler.swift; sourceTree = "<group>"; };
 		4539615F282EF7E0009F7328 /* NetworkRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestError.swift; sourceTree = "<group>"; };
+		45396165282EF81A009F7328 /* CataPokeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CataPokeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		45396167282EF81A009F7328 /* CataPokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CataPokeTests.swift; sourceTree = "<group>"; };
 		45E2E30A282D0C4C009EBE33 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		45E2E30D282D0CBE009EBE33 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		45E2E314282D17A2009EBE33 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
@@ -148,6 +161,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		45396162282EF81A009F7328 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE4C9CA42820167200FEA589 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -175,6 +195,14 @@
 				4539615F282EF7E0009F7328 /* NetworkRequestError.swift */,
 			);
 			path = NetworkRequest;
+			sourceTree = "<group>";
+		};
+		45396166282EF81A009F7328 /* CataPokeTests */ = {
+			isa = PBXGroup;
+			children = (
+				45396167282EF81A009F7328 /* CataPokeTests.swift */,
+			);
+			path = CataPokeTests;
 			sourceTree = "<group>";
 		};
 		45E2E30C282D0CAA009EBE33 /* Localization */ = {
@@ -452,6 +480,7 @@
 			children = (
 				CE9303D52822D0200057188E /* README.md */,
 				CE4C9CA92820167200FEA589 /* CataPoke */,
+				45396166282EF81A009F7328 /* CataPokeTests */,
 				CE4C9CA82820167200FEA589 /* Products */,
 				AA8138E3C65F139DA45924C0 /* Pods */,
 				184C62093601A134C74AD8CC /* Frameworks */,
@@ -462,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				CE4C9CA72820167200FEA589 /* CataPoke.app */,
+				45396165282EF81A009F7328 /* CataPokeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -526,6 +556,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		45396164282EF81A009F7328 /* CataPokeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4539616B282EF81A009F7328 /* Build configuration list for PBXNativeTarget "CataPokeTests" */;
+			buildPhases = (
+				45396161282EF81A009F7328 /* Sources */,
+				45396162282EF81A009F7328 /* Frameworks */,
+				45396163282EF81A009F7328 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4539616A282EF81A009F7328 /* PBXTargetDependency */,
+			);
+			name = CataPokeTests;
+			productName = CataPokeTests;
+			productReference = 45396165282EF81A009F7328 /* CataPokeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CE4C9CA62820167200FEA589 /* CataPoke */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE4C9CD12820167300FEA589 /* Build configuration list for PBXNativeTarget "CataPoke" */;
@@ -557,6 +605,10 @@
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					45396164282EF81A009F7328 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = CE4C9CA62820167200FEA589;
+					};
 					CE4C9CA62820167200FEA589 = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
@@ -576,11 +628,19 @@
 			projectRoot = "";
 			targets = (
 				CE4C9CA62820167200FEA589 /* CataPoke */,
+				45396164282EF81A009F7328 /* CataPokeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		45396163282EF81A009F7328 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE4C9CA52820167200FEA589 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -672,6 +732,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		45396161282EF81A009F7328 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45396168282EF81A009F7328 /* CataPokeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE4C9CA32820167200FEA589 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -742,6 +810,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4539616A282EF81A009F7328 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE4C9CA62820167200FEA589 /* CataPoke */;
+			targetProxy = 45396169282EF81A009F7328 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		CE4C9CB52820167300FEA589 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -754,6 +830,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4539616C282EF81A009F7328 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7U8A899S5N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SofiaRozhina.CataPokeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CataPoke.app/CataPoke";
+			};
+			name = Debug;
+		};
+		4539616D282EF81A009F7328 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7U8A899S5N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SofiaRozhina.CataPokeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CataPoke.app/CataPoke";
+			};
+			name = Release;
+		};
 		CE4C9CCF2820167300FEA589 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -925,6 +1037,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4539616B282EF81A009F7328 /* Build configuration list for PBXNativeTarget "CataPokeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4539616C282EF81A009F7328 /* Debug */,
+				4539616D282EF81A009F7328 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE4C9CA22820167200FEA589 /* Build configuration list for PBXProject "CataPoke" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
