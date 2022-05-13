@@ -1,12 +1,12 @@
 enum PokemonFactory {
 
-    static func makePokemons(from response: SpeciesResponse, offset: Int) -> [Pokemon] {
-        response.results.enumerated().map {
+    static func makePokemons(from species: [Species]) -> [Pokemon] {
+        species.map {
             Pokemon(
-                name: $0.element.name,
+                name: $0.name,
                 image: nil,
-                detailsUrl: $0.element.url,
-                imageUrl: PokemonImageUrlBuilder.makeUrl(for: "\(offset + $0.offset + 1)")
+                detailsUrl: $0.url,
+                imageUrl: PokemonImageUrlBuilder.makeUrl(forPokemonId: $0.url.lastPathComponent)
             )
         }
     }
