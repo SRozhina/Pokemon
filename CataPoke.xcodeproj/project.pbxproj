@@ -12,6 +12,7 @@
 		45396160282EF7E0009F7328 /* NetworkRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615F282EF7E0009F7328 /* NetworkRequestError.swift */; };
 		45396168282EF81A009F7328 /* CataPokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396167282EF81A009F7328 /* CataPokeTests.swift */; };
 		45396172282EFD32009F7328 /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396171282EFD32009F7328 /* AutoMockable.generated.swift */; };
+		45396177282EFD7A009F7328 /* Container+registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396176282EFD7A009F7328 /* Container+registration.swift */; };
 		45E2E30B282D0C54009EBE33 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E2E30A282D0C4C009EBE33 /* Localizable.strings */; };
 		45E2E30E282D0CBF009EBE33 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E30D282D0CBE009EBE33 /* Localization.swift */; };
 		45E2E315282D17A2009EBE33 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E314282D17A2009EBE33 /* DIContainer.swift */; };
@@ -93,6 +94,7 @@
 		45396165282EF81A009F7328 /* CataPokeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CataPokeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45396167282EF81A009F7328 /* CataPokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CataPokeTests.swift; sourceTree = "<group>"; };
 		45396171282EFD32009F7328 /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
+		45396176282EFD7A009F7328 /* Container+registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+registration.swift"; sourceTree = "<group>"; };
 		45E2E30A282D0C4C009EBE33 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		45E2E30D282D0CBE009EBE33 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		45E2E314282D17A2009EBE33 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
@@ -214,6 +216,14 @@
 				45396171282EFD32009F7328 /* AutoMockable.generated.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		45396173282EFD4D009F7328 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				45396176282EFD7A009F7328 /* Container+registration.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		45E2E30C282D0CAA009EBE33 /* Localization */ = {
@@ -767,6 +777,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45396168282EF81A009F7328 /* CataPokeTests.swift in Sources */,
+				45396177282EFD7A009F7328 /* Container+registration.swift in Sources */,
 				45396172282EFD32009F7328 /* AutoMockable.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

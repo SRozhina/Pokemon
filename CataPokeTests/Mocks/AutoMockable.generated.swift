@@ -86,3 +86,50 @@ class ImageCacheMock: ImageCache {
     }
 
 }
+class NetworkRequestHandlingMock: NetworkRequestHandling {
+
+    //MARK: - getData
+
+    var getDataUrlCallsCount = 0
+    var getDataUrlCalled: Bool {
+        return getDataUrlCallsCount > 0
+    }
+    var getDataUrlReceivedUrl: URL?
+    var getDataUrlReceivedInvocations: [URL] = []
+    var getDataUrlReturnValue: AnyPublisher<Data, Error>!
+    var getDataUrlClosure: ((URL) -> AnyPublisher<Data, Error>)?
+
+    func getData(url: URL) -> AnyPublisher<Data, Error> {
+        getDataUrlCallsCount += 1
+        getDataUrlReceivedUrl = url
+        getDataUrlReceivedInvocations.append(url)
+        if let getDataUrlClosure = getDataUrlClosure {
+            return getDataUrlClosure(url)
+        } else {
+            return getDataUrlReturnValue
+        }
+    }
+
+    //MARK: - getData
+
+    var getDataRequestCallsCount = 0
+    var getDataRequestCalled: Bool {
+        return getDataRequestCallsCount > 0
+    }
+    var getDataRequestReceivedRequest: URLRequest?
+    var getDataRequestReceivedInvocations: [URLRequest] = []
+    var getDataRequestReturnValue: AnyPublisher<Data, Error>!
+    var getDataRequestClosure: ((URLRequest) -> AnyPublisher<Data, Error>)?
+
+    func getData(request: URLRequest) -> AnyPublisher<Data, Error> {
+        getDataRequestCallsCount += 1
+        getDataRequestReceivedRequest = request
+        getDataRequestReceivedInvocations.append(request)
+        if let getDataRequestClosure = getDataRequestClosure {
+            return getDataRequestClosure(request)
+        } else {
+            return getDataRequestReturnValue
+        }
+    }
+
+}
