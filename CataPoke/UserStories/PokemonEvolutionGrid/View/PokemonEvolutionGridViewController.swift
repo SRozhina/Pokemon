@@ -49,6 +49,27 @@ class PokemonEvolutionGridViewController: UIViewController {
         return cell
     }
 
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .label
+        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.text = Localization.Details.Evolution.title
+        label.textAlignment = .center
+        return label
+    }()
+
+    private lazy var reloadButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = Image.reload
+        let button = UIButton(configuration: configuration, primaryAction: UIAction() { [weak self] _ in
+            self?.presenter.didTapReload()
+        })
+        button.isHidden = true
+        return button
+    }()
+
+    private lazy var activityIndicator = UIActivityIndicatorView(style: .medium)
+
     init(presenter: IPokemonEvolutionGridPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -67,7 +88,10 @@ class PokemonEvolutionGridViewController: UIViewController {
 
     private func setupView() {
         [
+            titleLabel,
             collectionView,
+            reloadButton,
+            activityIndicator,
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
@@ -78,12 +102,24 @@ class PokemonEvolutionGridViewController: UIViewController {
 
     private func setupConstrains() {
         NSLayoutConstraint.activate([
-            view.heightAnchor.constraint(equalToConstant: Constants.Item.height),
+            view.heightAnchor.constraint(equalToConstant: Constants.height),
 
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            reloadButton.heightAnchor.constraint(equalToConstant: Space.fivefold),
+            reloadButton.widthAnchor.constraint(equalToConstant: Space.fivefold),
+            reloadButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            reloadButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
 }
@@ -99,19 +135,19 @@ extension PokemonEvolutionGridViewController: UICollectionViewDelegate {
 
 extension PokemonEvolutionGridViewController: IPokemonEvolutionGridView {
     func showLoading() {
-        // TODO show activity indicator
+        activityIndicator.startAnimating()
     }
 
     func hideLoading() {
-        // TODO hide activity indicator
+        activityIndicator.stopAnimating()
     }
 
     func showError() {
-        // TODO show error
+        reloadButton.isHidden = false
     }
 
     func hideError() {
-        // TODO hide error
+        reloadButton.isHidden = true
     }
 
     func set(viewModels: [PokemonGridViewModel]) {
@@ -131,6 +167,7 @@ private extension PokemonEvolutionGridViewController {
 
 private extension PokemonEvolutionGridViewController {
     enum Constants {
+        static let height: CGFloat = 250
         enum Item {
             static let width: CGFloat = 100
             static let height: CGFloat = 150

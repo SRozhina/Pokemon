@@ -9,3 +9,5 @@
 "details.characteristics.hapiness_rate.title" = "Hapiness";
 "details.characteristics.hapiness_rate.value" = "happy";
 "details.characteristics.gender.title" = "Gender";
+
+"details.evolution.title" = "Evolution chain";

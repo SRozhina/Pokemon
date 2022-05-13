@@ -22,6 +22,11 @@ public enum Localization {
             }
         }
 
+        public enum Evolution {
+            /// Evolution chain
+            public static let title = localize("details.evolution.title")
+        }
+
         public enum Special {
             /// baby
             public static let baby = localize("details.special.baby")
