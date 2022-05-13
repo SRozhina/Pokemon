@@ -36,6 +36,9 @@ class PokemonGridPresenter {
         return pokemonsService.fetchPokemonsPage(pageSize: Constants.pageSize, from: pokemons.count)
             .subscribe(on: DispatchQueue.global(qos: .utility))
             .receive(on: pokemonsQueue)
+            .handleEvents { [weak self] _ in
+                self?.isLoading = false
+            }
             .handleEvents(receiveOutput: { [weak self] in
                 self?.handlePokemonPage($0)
             })
@@ -59,7 +62,6 @@ class PokemonGridPresenter {
 
     private func handlePokemonPage(_ page: PokemonPage) {
         total = page.total
-        isLoading = false
         let pokemons = page.pokemons.map { [weak self] in $0.with(image: self?.images[$0.imageUrl]) }
         pokemons.forEach(loadImageIfNeeded)
         self.pokemons.append(contentsOf: pokemons)
@@ -148,7 +150,7 @@ extension PokemonGridPresenter: IPokemonGridPresenter {
     }
 
     func didTapOnReloadPage() {
-        view?.set(viewModels: viewModels, footer: makeGridFooterValue())
+        view?.set(viewModels: viewModels, footer: .loading)
         loadPage()
     }
 }
