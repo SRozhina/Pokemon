@@ -114,6 +114,7 @@ disabled_rules:
     
 excluded:
   - Pods
+  - CataPokeTests/Mocks/AutoMockable.generated.swift
 
 line_length:
   warning: 150

@@ -11,6 +11,7 @@
 		4539615E282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615D282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift */; };
 		45396160282EF7E0009F7328 /* NetworkRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615F282EF7E0009F7328 /* NetworkRequestError.swift */; };
 		45396168282EF81A009F7328 /* CataPokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396167282EF81A009F7328 /* CataPokeTests.swift */; };
+		45396172282EFD32009F7328 /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396171282EFD32009F7328 /* AutoMockable.generated.swift */; };
 		45E2E30B282D0C54009EBE33 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E2E30A282D0C4C009EBE33 /* Localizable.strings */; };
 		45E2E30E282D0CBF009EBE33 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E30D282D0CBE009EBE33 /* Localization.swift */; };
 		45E2E315282D17A2009EBE33 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E314282D17A2009EBE33 /* DIContainer.swift */; };
@@ -91,6 +92,7 @@
 		4539615F282EF7E0009F7328 /* NetworkRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestError.swift; sourceTree = "<group>"; };
 		45396165282EF81A009F7328 /* CataPokeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CataPokeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45396167282EF81A009F7328 /* CataPokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CataPokeTests.swift; sourceTree = "<group>"; };
+		45396171282EFD32009F7328 /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
 		45E2E30A282D0C4C009EBE33 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		45E2E30D282D0CBE009EBE33 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		45E2E314282D17A2009EBE33 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
@@ -200,9 +202,18 @@
 		45396166282EF81A009F7328 /* CataPokeTests */ = {
 			isa = PBXGroup;
 			children = (
+				45396170282EFD32009F7328 /* Mocks */,
 				45396167282EF81A009F7328 /* CataPokeTests.swift */,
 			);
 			path = CataPokeTests;
+			sourceTree = "<group>";
+		};
+		45396170282EFD32009F7328 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				45396171282EFD32009F7328 /* AutoMockable.generated.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		45E2E30C282D0CAA009EBE33 /* Localization */ = {
@@ -580,6 +591,7 @@
 			buildPhases = (
 				95100E57CBA7D8A26117C611 /* [CP] Check Pods Manifest.lock */,
 				45E2E309282D0C1F009EBE33 /* SwiftGen */,
+				4539616E282EFB0E009F7328 /* Sourcery mock generation */,
 				CE4C9CA32820167200FEA589 /* Sources */,
 				CE4C9CA42820167200FEA589 /* Frameworks */,
 				CE4C9CA52820167200FEA589 /* Resources */,
@@ -654,6 +666,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4539616E282EFB0E009F7328 /* Sourcery mock generation */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Sourcery mock generation";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Sourcery/bin/sourcery\"\n";
+		};
 		45E2E308282D09C4009EBE33 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -737,6 +767,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45396168282EF81A009F7328 /* CataPokeTests.swift in Sources */,
+				45396172282EFD32009F7328 /* AutoMockable.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

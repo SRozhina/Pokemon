@@ -1,5 +1,6 @@
 import UIKit
 
+// sourcery: AutoMockable
 protocol ImageCache {
     func getImage(for url: URL) -> UIImage?
     func insertImage(_ image: UIImage?, for url: URL)

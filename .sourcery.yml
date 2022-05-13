@@ -1,0 +1,9 @@
+sources:
+  - CataPoke/Services/
+templates:
+  - Templates/AutoMockable.stencil
+output:
+  CataPokeTests/Mocks
+args:
+  autoMockableImports: ["Combine"]
+  autoMockableTestableImports: ["CataPoke"]
