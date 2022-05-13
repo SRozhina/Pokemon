@@ -10,8 +10,9 @@
 		4539615C282EF6AF009F7328 /* NetworkRequestHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615B282EF6AF009F7328 /* NetworkRequestHandling.swift */; };
 		4539615E282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615D282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift */; };
 		45396160282EF7E0009F7328 /* NetworkRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615F282EF7E0009F7328 /* NetworkRequestError.swift */; };
-		45396168282EF81A009F7328 /* CataPokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396167282EF81A009F7328 /* CataPokeTests.swift */; };
+		45396168282EF81A009F7328 /* ImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396167282EF81A009F7328 /* ImageLoaderTests.swift */; };
 		45396172282EFD32009F7328 /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396171282EFD32009F7328 /* AutoMockable.generated.swift */; };
+		45396175282EFD56009F7328 /* CataPokeTestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396174282EFD56009F7328 /* CataPokeTestError.swift */; };
 		45396177282EFD7A009F7328 /* Container+registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396176282EFD7A009F7328 /* Container+registration.swift */; };
 		45E2E30B282D0C54009EBE33 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E2E30A282D0C4C009EBE33 /* Localizable.strings */; };
 		45E2E30E282D0CBF009EBE33 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E30D282D0CBE009EBE33 /* Localization.swift */; };
@@ -64,6 +65,7 @@
 		45E2E3CB282E2CE0009EBE33 /* PokemonEvolutionGridPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E3CA282E2CE0009EBE33 /* PokemonEvolutionGridPresenter.swift */; };
 		45E2E3CE282E2D0D009EBE33 /* IPokemonEvolutionGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E3CD282E2D0D009EBE33 /* IPokemonEvolutionGridView.swift */; };
 		45E2E3D0282E2D2E009EBE33 /* PokemonEvolutionGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E3CF282E2D2E009EBE33 /* PokemonEvolutionGridViewController.swift */; };
+		776A3F8E7EC93C518852C984 /* Pods_CataPokeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089E16B748340A6506EF9F6C /* Pods_CataPokeTests.framework */; };
 		CE4C9CAB2820167200FEA589 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C9CAA2820167200FEA589 /* AppDelegate.swift */; };
 		CE4C9CAD2820167200FEA589 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C9CAC2820167200FEA589 /* SceneDelegate.swift */; };
 		CE4C9CB42820167300FEA589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4C9CB32820167300FEA589 /* Assets.xcassets */; };
@@ -88,12 +90,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		089E16B748340A6506EF9F6C /* Pods_CataPokeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CataPokeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A0FA8537E0263804796F767 /* Pods-CataPokeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CataPokeTests.release.xcconfig"; path = "Target Support Files/Pods-CataPokeTests/Pods-CataPokeTests.release.xcconfig"; sourceTree = "<group>"; };
 		4539615B282EF6AF009F7328 /* NetworkRequestHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestHandling.swift; sourceTree = "<group>"; };
 		4539615D282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkRequestHandler.swift; sourceTree = "<group>"; };
 		4539615F282EF7E0009F7328 /* NetworkRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestError.swift; sourceTree = "<group>"; };
 		45396165282EF81A009F7328 /* CataPokeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CataPokeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		45396167282EF81A009F7328 /* CataPokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CataPokeTests.swift; sourceTree = "<group>"; };
+		45396167282EF81A009F7328 /* ImageLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderTests.swift; sourceTree = "<group>"; };
 		45396171282EFD32009F7328 /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
+		45396174282EFD56009F7328 /* CataPokeTestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CataPokeTestError.swift; sourceTree = "<group>"; };
 		45396176282EFD7A009F7328 /* Container+registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+registration.swift"; sourceTree = "<group>"; };
 		45E2E30A282D0C4C009EBE33 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		45E2E30D282D0CBE009EBE33 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
@@ -147,6 +152,7 @@
 		45E2E3CD282E2D0D009EBE33 /* IPokemonEvolutionGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPokemonEvolutionGridView.swift; sourceTree = "<group>"; };
 		45E2E3CF282E2D2E009EBE33 /* PokemonEvolutionGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonEvolutionGridViewController.swift; sourceTree = "<group>"; };
 		4F81FAFB64F154D1591FB9AC /* Pods-CataPoke.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CataPoke.debug.xcconfig"; path = "Target Support Files/Pods-CataPoke/Pods-CataPoke.debug.xcconfig"; sourceTree = "<group>"; };
+		7421B87C21C9F8C132AEE9D7 /* Pods-CataPokeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CataPokeTests.debug.xcconfig"; path = "Target Support Files/Pods-CataPokeTests/Pods-CataPokeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB098315C5688D07D373C237 /* Pods_CataPoke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CataPoke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEFDC978EC37B059911549D5 /* Pods-CataPoke.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CataPoke.release.xcconfig"; path = "Target Support Files/Pods-CataPoke/Pods-CataPoke.release.xcconfig"; sourceTree = "<group>"; };
 		CE4C9CA72820167200FEA589 /* CataPoke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CataPoke.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				776A3F8E7EC93C518852C984 /* Pods_CataPokeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				AB098315C5688D07D373C237 /* Pods_CataPoke.framework */,
+				089E16B748340A6506EF9F6C /* Pods_CataPokeTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -204,8 +212,9 @@
 		45396166282EF81A009F7328 /* CataPokeTests */ = {
 			isa = PBXGroup;
 			children = (
+				45396173282EFD4D009F7328 /* Common */,
 				45396170282EFD32009F7328 /* Mocks */,
-				45396167282EF81A009F7328 /* CataPokeTests.swift */,
+				45396167282EF81A009F7328 /* ImageLoaderTests.swift */,
 			);
 			path = CataPokeTests;
 			sourceTree = "<group>";
@@ -221,6 +230,7 @@
 		45396173282EFD4D009F7328 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				45396174282EFD56009F7328 /* CataPokeTestError.swift */,
 				45396176282EFD7A009F7328 /* Container+registration.swift */,
 			);
 			path = Common;
@@ -492,6 +502,8 @@
 			children = (
 				4F81FAFB64F154D1591FB9AC /* Pods-CataPoke.debug.xcconfig */,
 				AEFDC978EC37B059911549D5 /* Pods-CataPoke.release.xcconfig */,
+				7421B87C21C9F8C132AEE9D7 /* Pods-CataPokeTests.debug.xcconfig */,
+				2A0FA8537E0263804796F767 /* Pods-CataPokeTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -581,9 +593,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4539616B282EF81A009F7328 /* Build configuration list for PBXNativeTarget "CataPokeTests" */;
 			buildPhases = (
+				C49D85F84AE143EAED2A3EEB /* [CP] Check Pods Manifest.lock */,
 				45396161282EF81A009F7328 /* Sources */,
 				45396162282EF81A009F7328 /* Frameworks */,
 				45396163282EF81A009F7328 /* Resources */,
+				D15D39E4AD95CFDB2678A401 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -769,6 +783,45 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C49D85F84AE143EAED2A3EEB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CataPokeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D15D39E4AD95CFDB2678A401 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CataPokeTests/Pods-CataPokeTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CataPokeTests/Pods-CataPokeTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CataPokeTests/Pods-CataPokeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -776,9 +829,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45396168282EF81A009F7328 /* CataPokeTests.swift in Sources */,
 				45396177282EFD7A009F7328 /* Container+registration.swift in Sources */,
+				45396168282EF81A009F7328 /* ImageLoaderTests.swift in Sources */,
 				45396172282EFD32009F7328 /* AutoMockable.generated.swift in Sources */,
+				45396175282EFD56009F7328 /* CataPokeTestError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -874,6 +928,7 @@
 /* Begin XCBuildConfiguration section */
 		4539616C282EF81A009F7328 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7421B87C21C9F8C132AEE9D7 /* Pods-CataPokeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -892,6 +947,7 @@
 		};
 		4539616D282EF81A009F7328 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A0FA8537E0263804796F767 /* Pods-CataPokeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
