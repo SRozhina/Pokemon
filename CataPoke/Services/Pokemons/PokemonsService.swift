@@ -2,9 +2,9 @@ import Combine
 import Foundation
 
 final class PokemonsService: IPokemonsService {
-    private let requestHandler: RequestHandling
+    private let requestHandler: PokemonRequestHandling
 
-    init(requestHandler: RequestHandling) {
+    init(requestHandler: PokemonRequestHandling) {
         self.requestHandler = requestHandler
     }
 

@@ -6,16 +6,25 @@ enum DIContainer {
         let container = Container()
 
         container
-            .register(RequestHandling.self) { _ in
+            .register(NetworkRequestHandling.self) { _ in
+                URLSessionNetworkRequestHandler()
+            }
+            .inObjectScope(.container)
+
+        container
+            .register(PokemonRequestHandling.self) { resolver in
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                return URLSessionRequestHandler(decoder: decoder)
+                return PokemonRequestHandler(
+                    requestHandling: resolver.resolve(NetworkRequestHandling.self)!,
+                    decoder: decoder
+                )
             }
             .inObjectScope(.container)
 
         container
             .register(IPokemonsService.self) { resolver in
-                PokemonsService(requestHandler: resolver.resolve(RequestHandling.self)!)
+                PokemonsService(requestHandler: resolver.resolve(PokemonRequestHandling.self)!)
             }
             .inObjectScope(.container)
 
@@ -27,7 +36,10 @@ enum DIContainer {
 
         container
             .register(ImageLoading.self) { resolver in
-                ImageLoader(cache: resolver.resolve(ImageCache.self)!)
+                ImageLoader(
+                    requestHandling: resolver.resolve(NetworkRequestHandling.self)!,
+                    cache: resolver.resolve(ImageCache.self)!
+                )
             }
             .inObjectScope(.container)
 

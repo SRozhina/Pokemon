@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4539615C282EF6AF009F7328 /* NetworkRequestHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615B282EF6AF009F7328 /* NetworkRequestHandling.swift */; };
+		4539615E282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615D282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift */; };
+		45396160282EF7E0009F7328 /* NetworkRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615F282EF7E0009F7328 /* NetworkRequestError.swift */; };
 		45E2E30B282D0C54009EBE33 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E2E30A282D0C4C009EBE33 /* Localizable.strings */; };
 		45E2E30E282D0CBF009EBE33 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E30D282D0CBE009EBE33 /* Localization.swift */; };
 		45E2E315282D17A2009EBE33 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E314282D17A2009EBE33 /* DIContainer.swift */; };
@@ -66,12 +69,15 @@
 		CE9303C5282270F60057188E /* EvolutionChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9303C4282270F60057188E /* EvolutionChain.swift */; };
 		CE9303CA282271990057188E /* APIRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9303C9282271990057188E /* APIRoute.swift */; };
 		CE9303CC2822741F0057188E /* RequestHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9303CB2822741F0057188E /* RequestHandling.swift */; };
-		CE9303CE282274C30057188E /* URLSessionRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9303CD282274C30057188E /* URLSessionRequestHandler.swift */; };
+		CE9303CE282274C30057188E /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9303CD282274C30057188E /* RequestHandler.swift */; };
 		CE9303D92822D1D30057188E /* SpeciesDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9303D82822D1D30057188E /* SpeciesDetails.swift */; };
 		DD96BE31C68FF27F7B680A03 /* Pods_CataPoke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB098315C5688D07D373C237 /* Pods_CataPoke.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4539615B282EF6AF009F7328 /* NetworkRequestHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestHandling.swift; sourceTree = "<group>"; };
+		4539615D282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkRequestHandler.swift; sourceTree = "<group>"; };
+		4539615F282EF7E0009F7328 /* NetworkRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestError.swift; sourceTree = "<group>"; };
 		45E2E30A282D0C4C009EBE33 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		45E2E30D282D0CBE009EBE33 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		45E2E314282D17A2009EBE33 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
@@ -136,7 +142,7 @@
 		CE9303C4282270F60057188E /* EvolutionChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChain.swift; sourceTree = "<group>"; };
 		CE9303C9282271990057188E /* APIRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoute.swift; sourceTree = "<group>"; };
 		CE9303CB2822741F0057188E /* RequestHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandling.swift; sourceTree = "<group>"; };
-		CE9303CD282274C30057188E /* URLSessionRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionRequestHandler.swift; sourceTree = "<group>"; };
+		CE9303CD282274C30057188E /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
 		CE9303D52822D0200057188E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CE9303D82822D1D30057188E /* SpeciesDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +165,16 @@
 				AB098315C5688D07D373C237 /* Pods_CataPoke.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4539615A282EF6A3009F7328 /* NetworkRequest */ = {
+			isa = PBXGroup;
+			children = (
+				4539615B282EF6AF009F7328 /* NetworkRequestHandling.swift */,
+				4539615D282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift */,
+				4539615F282EF7E0009F7328 /* NetworkRequestError.swift */,
+			);
+			path = NetworkRequest;
 			sourceTree = "<group>";
 		};
 		45E2E30C282D0CAA009EBE33 /* Localization */ = {
@@ -192,11 +208,12 @@
 		45E2E311282D141A009EBE33 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4539615A282EF6A3009F7328 /* NetworkRequest */,
 				45E2E32F282D3176009EBE33 /* Image */,
 				45E2E32A282D2AAD009EBE33 /* Pokemons */,
 				45E2E313282D1793009EBE33 /* DIContainer */,
 				CE9303C128226EDC0057188E /* Models */,
-				CE9303C8282271730057188E /* Network */,
+				CE9303C8282271730057188E /* PokemonNetwork */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -472,14 +489,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		CE9303C8282271730057188E /* Network */ = {
+		CE9303C8282271730057188E /* PokemonNetwork */ = {
 			isa = PBXGroup;
 			children = (
 				CE9303C9282271990057188E /* APIRoute.swift */,
-				CE9303CD282274C30057188E /* URLSessionRequestHandler.swift */,
+				CE9303CD282274C30057188E /* RequestHandler.swift */,
 				CE9303CB2822741F0057188E /* RequestHandling.swift */,
 			);
-			path = Network;
+			path = PokemonNetwork;
 			sourceTree = "<group>";
 		};
 		CE9303CF282279F60057188E /* PokemonGrid */ = {
@@ -680,9 +697,10 @@
 				45E2E333282D31AB009EBE33 /* ImageCache.swift in Sources */,
 				45E2E3CB282E2CE0009EBE33 /* PokemonEvolutionGridPresenter.swift in Sources */,
 				45E2E3B8282DBE0C009EBE33 /* PokemonDetails.swift in Sources */,
-				CE9303CE282274C30057188E /* URLSessionRequestHandler.swift in Sources */,
+				CE9303CE282274C30057188E /* RequestHandler.swift in Sources */,
 				45E2E30E282D0CBF009EBE33 /* Localization.swift in Sources */,
 				45E2E339282D3200009EBE33 /* PokemonImageUrlBuilder.swift in Sources */,
+				4539615C282EF6AF009F7328 /* NetworkRequestHandling.swift in Sources */,
 				45E2E3C1282DC08D009EBE33 /* TagView.swift in Sources */,
 				45E2E33F282D36CD009EBE33 /* IPokemonGridPresenter.swift in Sources */,
 				CE4C9CAB2820167200FEA589 /* AppDelegate.swift in Sources */,
@@ -702,6 +720,7 @@
 				45E2E335282D31C0009EBE33 /* ImageLoader.swift in Sources */,
 				45E2E3AB282DBAAA009EBE33 /* IPokemonDetailsView.swift in Sources */,
 				45E2E337282D31D5009EBE33 /* ImageLoading.swift in Sources */,
+				4539615E282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift in Sources */,
 				45E2E37B282D728E009EBE33 /* Space.swift in Sources */,
 				45E2E3D0282E2D2E009EBE33 /* PokemonEvolutionGridViewController.swift in Sources */,
 				45E2E3BA282DBE27009EBE33 /* PokemonDetailsFactory.swift in Sources */,
@@ -710,6 +729,7 @@
 				45E2E3AD282DBAC4009EBE33 /* PokemonDetailsViewController.swift in Sources */,
 				CE9303D92822D1D30057188E /* SpeciesDetails.swift in Sources */,
 				45E2E36F282D6E0C009EBE33 /* PokemonFactory.swift in Sources */,
+				45396160282EF7E0009F7328 /* NetworkRequestError.swift in Sources */,
 				45E2E34A282D3790009EBE33 /* PokemonGridViewModel.swift in Sources */,
 				45E2E3BC282DBF8A009EBE33 /* PokemonDetailsViewModelFactory.swift in Sources */,
 				45E2E331282D3181009EBE33 /* DefaultImageCache.swift in Sources */,

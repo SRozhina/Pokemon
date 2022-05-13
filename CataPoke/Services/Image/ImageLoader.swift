@@ -3,14 +3,14 @@ import UIKit
 
 final class ImageLoader: ImageLoading {
 
-    private let session: URLSession
+    private let requestHandling: NetworkRequestHandling
     private let cache: ImageCache
 
     init(
-        cache: ImageCache,
-        session: URLSession = .shared
+        requestHandling: NetworkRequestHandling,
+        cache: ImageCache
     ) {
-        self.session = session
+        self.requestHandling = requestHandling
         self.cache = cache
     }
 
@@ -18,8 +18,8 @@ final class ImageLoader: ImageLoading {
         if let image = cache.getImage(for: url) {
             return Just(image).eraseToAnyPublisher()
         }
-        return session.dataTaskPublisher(for: url)
-            .map { data, _ -> UIImage? in return UIImage(data: data) }
+        return requestHandling.getData(url: url)
+            .map { UIImage(data: $0) }
             .catch { _ in return Just(nil) }
             .handleEvents(receiveOutput: {[unowned self] image in
                 guard let image = image else { return }
