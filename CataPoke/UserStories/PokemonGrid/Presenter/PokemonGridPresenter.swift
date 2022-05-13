@@ -36,9 +36,9 @@ class PokemonGridPresenter {
         return pokemonsService.fetchPokemonsPage(pageSize: Constants.pageSize, from: pokemons.count)
             .subscribe(on: DispatchQueue.global(qos: .utility))
             .receive(on: pokemonsQueue)
-            .handleEvents { [weak self] _ in
+            .handleEvents(receiveRequest: { [weak self] _ in
                 self?.isLoading = false
-            }
+            })
             .handleEvents(receiveOutput: { [weak self] in
                 self?.handlePokemonPage($0)
             })
