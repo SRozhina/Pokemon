@@ -1,0 +1,4 @@
+language: swift
+osx_image: xcode13.3
+script:
+- xcodebuild -workspace CataPoke.xcworkspace -scheme CataPoke -destination 'platform=iOS Simulator,OS=15.4,name=iPhone 13' build
