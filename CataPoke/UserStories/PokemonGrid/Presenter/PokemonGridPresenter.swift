@@ -36,12 +36,14 @@ class PokemonGridPresenter {
         return pokemonsService.fetchPokemonsPage(pageSize: Constants.pageSize, from: pokemons.count)
             .subscribe(on: DispatchQueue.global(qos: .utility))
             .receive(on: pokemonsQueue)
-            .handleEvents(receiveRequest: { [weak self] _ in
-                self?.isLoading = false
-            })
-            .handleEvents(receiveOutput: { [weak self] in
-                self?.handlePokemonPage($0)
-            })
+            .handleEvents(
+                receiveOutput: { [weak self] in
+                    self?.handlePokemonPage($0)
+                },
+                receiveCompletion: { [weak self] _ in
+                    self?.isLoading = false
+                }
+            )
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: {
@@ -91,9 +93,7 @@ class PokemonGridPresenter {
     private func loadImageIfNeeded(pokemon: Pokemon) {
         let url = pokemon.imageUrl
         guard !images.keys.contains(url), !loadingImages.contains(url) else { return }
-        pokemonsQueue.async {
-            self.loadingImages.insert(url)
-        }
+        loadingImages.insert(url)
 
         imageLoader.loadImage(from: url)
             .subscribe(on: DispatchQueue.global(qos: .utility))
