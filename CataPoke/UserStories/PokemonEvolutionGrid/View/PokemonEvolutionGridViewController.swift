@@ -62,7 +62,7 @@ class PokemonEvolutionGridViewController: UIViewController {
     private lazy var reloadButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.image = Image.reload
-        let button = UIButton(configuration: configuration, primaryAction: UIAction() { [weak self] _ in
+        let button = UIButton(configuration: configuration, primaryAction: UIAction { [weak self] _ in
             self?.presenter.didTapReload()
         })
         button.isHidden = true

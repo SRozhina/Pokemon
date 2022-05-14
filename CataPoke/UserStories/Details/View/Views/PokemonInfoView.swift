@@ -43,19 +43,12 @@ class PokemonInfoView: UIView {
         return label
     }()
 
-    private lazy var stackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.spacing = Space.double
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
     private lazy var textsStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
         view.spacing = Space.double
         view.alignment = .leading
+        view.distribution = .fillEqually
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -73,23 +66,29 @@ class PokemonInfoView: UIView {
     }
 
     private func setupView() {
-        addSubview(stackView)
         [
             imageView,
             textsStackView
-        ].forEach(stackView.addArrangedSubview)
+        ].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+        }
         textsStackView.addArrangedSubview(nameLabel)
     }
 
     private func setupConstrains() {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             imageView.widthAnchor.constraint(equalToConstant: Constants.ImageSize.width),
             imageView.heightAnchor.constraint(equalToConstant: Constants.ImageSize.height),
+
+            textsStackView.topAnchor.constraint(equalTo: topAnchor),
+            textsStackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Space.double),
+            textsStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            textsStackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
         ])
     }
 
