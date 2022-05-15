@@ -89,17 +89,17 @@ enum DIContainer {
 
     private static func registerPokemonEvolutionGrid(in container: Container) {
         container
-            .register(IPokemonEvolutionGridPresenter.self) { (resolver, url: URL) in
+            .register(IPokemonEvolutionGridPresenter.self) { (resolver, details: PokemonDetails) in
                 PokemonEvolutionGridPresenter(
-                    url: url,
+                    details: details,
                     pokemonsService: resolver.resolve(IPokemonsService.self)!,
                     imageLoader: resolver.resolve(ImageLoading.self)!
                 )
             }
 
         container
-            .register(IPokemonEvolutionGridView.self) { (resolver, url: URL) in
-                let presenter = resolver.resolve(IPokemonEvolutionGridPresenter.self, argument: url)!
+            .register(IPokemonEvolutionGridView.self) { (resolver, details: PokemonDetails) in
+                let presenter = resolver.resolve(IPokemonEvolutionGridPresenter.self, argument: details)!
                 let view = PokemonEvolutionGridViewController(presenter: presenter)
                 presenter.view = view
                 return view

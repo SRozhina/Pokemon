@@ -7,7 +7,7 @@ class PokemonEvolutionGridPresenter {
     weak var view: IPokemonEvolutionGridView?
     weak var moduleOutput: PokemonEvolutionGridModuleOutput?
 
-    private let url: URL
+    private let details: PokemonDetails
     private let pokemonsService: IPokemonsService
     private let imageLoader: ImageLoading
 
@@ -17,11 +17,11 @@ class PokemonEvolutionGridPresenter {
     private var viewModels: [PokemonGridViewModel] = []
 
     init(
-        url: URL,
+        details: PokemonDetails,
         pokemonsService: IPokemonsService,
         imageLoader: ImageLoading
     ) {
-        self.url = url
+        self.details = details
         self.pokemonsService = pokemonsService
         self.imageLoader = imageLoader
     }
@@ -33,7 +33,7 @@ class PokemonEvolutionGridPresenter {
     }
 
     private func loadPokemons() {
-        pokemonsService.fetchEvolutionChain(url: url)
+        pokemonsService.fetchEvolutionChain(url: details.evolutionUrl)
             .subscribe(on: DispatchQueue.global(qos: .utility))
             .receive(on: pokemonsEvolutionQueue)
             .handleEvents(receiveOutput: { [weak self] in
@@ -96,7 +96,10 @@ extension PokemonEvolutionGridPresenter: IPokemonEvolutionGridPresenter {
     }
 
     func didTap(on viewModel: PokemonGridViewModel) {
-        guard let pokemon = pokemons.first(where: { $0.name == viewModel.name }) else { return }
+        guard
+            viewModel.name != details.name,
+            let pokemon = pokemons.first(where: { $0.name == viewModel.name })
+        else { return }
         moduleOutput?.pokemonEvolutionGridModule(self, didTapPokemon: pokemon)
     }
 }

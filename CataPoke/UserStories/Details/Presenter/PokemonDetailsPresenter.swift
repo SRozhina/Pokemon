@@ -49,7 +49,7 @@ extension PokemonDetailsPresenter: IPokemonDetailsPresenter {
                 receiveCompletion: { _ in },
                 receiveValue: { [weak self] details in
                     guard let self = self else { return }
-                    self.moduleOutput?.pokemonDetailsModule(self, didFetchEvolutionUrl: details.evolutionUrl)
+                    self.moduleOutput?.pokemonDetailsModule(self, didFetchPokemonDetails: details)
                     let viewModel = PokemonDetailsViewModelFactory.makeViewModel(details, image: self.pokemon.image)
                     self.view?.set(viewModel: viewModel)
                 })

@@ -53,8 +53,8 @@ extension PokemonDetailsCoordinator: PokemonDetailsModuleOutput {
         openPokemon(pokemon)
     }
 
-    func pokemonDetailsModule(_ module: PokemonDetailsModuleInput, didFetchEvolutionUrl url: URL) {
-        guard let view = container.resolve(IPokemonEvolutionGridView.self, argument: url),
+    func pokemonDetailsModule(_ module: PokemonDetailsModuleInput, didFetchPokemonDetails details: PokemonDetails) {
+        guard let view = container.resolve(IPokemonEvolutionGridView.self, argument: details),
               let viewController = view as? UIViewController
         else { return }
         view.presenter.moduleOutput = self

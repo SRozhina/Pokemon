@@ -11,6 +11,6 @@ protocol PokemonDetailsModuleInput: AnyObject {
 
 protocol PokemonDetailsModuleOutput: AnyObject {
     func pokemonDetailsModule(_ module: PokemonDetailsModuleInput, didTapPokemon pokemon: Pokemon)
-    func pokemonDetailsModule(_ module: PokemonDetailsModuleInput, didFetchEvolutionUrl url: URL)
+    func pokemonDetailsModule(_ module: PokemonDetailsModuleInput, didFetchPokemonDetails details: PokemonDetails)
     func pokemonDetailsModuleDidClose(_ module: PokemonDetailsModuleInput)
 }
