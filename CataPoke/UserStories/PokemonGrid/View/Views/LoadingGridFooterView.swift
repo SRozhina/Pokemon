@@ -33,4 +33,9 @@ final class LoadingGridFooterView: UICollectionViewCell, SelfDescriptive {
             activityIndicator.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        activityIndicator.startAnimating()
+    }
 }
