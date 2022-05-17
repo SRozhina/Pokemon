@@ -1,47 +1,47 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 import Foundation
 
-public enum Localization {
+enum Localization {
 
-    public enum Details {
+    enum Details {
 
-        public enum Characteristics {
+        enum Characteristics {
             /// Capture rate
-            public static let captureRate = localize("details.characteristics.capture_rate")
+            static let captureRate = localize("details.characteristics.capture_rate")
 
-            public enum Gender {
+            enum Gender {
                 /// Gender
-                public static let title = localize("details.characteristics.gender.title")
+                static let title = localize("details.characteristics.gender.title")
             }
 
-            public enum HapinessRate {
+            enum HapinessRate {
                 /// Hapiness
-                public static let title = localize("details.characteristics.hapiness_rate.title")
+                static let title = localize("details.characteristics.hapiness_rate.title")
                 /// happy
-                public static let value = localize("details.characteristics.hapiness_rate.value")
+                static let value = localize("details.characteristics.hapiness_rate.value")
             }
         }
 
-        public enum Evolution {
+        enum Evolution {
             /// Evolution chain
-            public static let title = localize("details.evolution.title")
+            static let title = localize("details.evolution.title")
         }
 
-        public enum Special {
+        enum Special {
             /// baby
-            public static let baby = localize("details.special.baby")
+            static let baby = localize("details.special.baby")
             /// legendary
-            public static let legendary = localize("details.special.legendary")
+            static let legendary = localize("details.special.legendary")
             /// mythical
-            public static let mythical = localize("details.special.mythical")
+            static let mythical = localize("details.special.mythical")
         }
     }
 
-    public enum Grid {
+    enum Grid {
         /// Reload pokemons
-        public static let reload = localize("grid.reload")
+        static let reload = localize("grid.reload")
         /// POKéMON
-        public static let title = localize("grid.title")
+        static let title = localize("grid.title")
     }
 }
 
