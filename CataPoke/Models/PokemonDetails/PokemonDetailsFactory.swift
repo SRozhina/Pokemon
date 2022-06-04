@@ -2,8 +2,8 @@ enum PokemonDetailsFactory {
     static func makeDetails(_ speciesDetails: SpeciesDetails) -> PokemonDetails {
         PokemonDetails(
             name: speciesDetails.name,
-            happinessRate: rate(Double(speciesDetails.baseHappiness), Constant.happinessMaximum),
-            captureRate: rate(Double(speciesDetails.baseHappiness), Constant.captureMaximum),
+            happinessRate: rate(value: Double(speciesDetails.baseHappiness), max: Constant.happinessMaximum),
+            captureRate: rate(value: Double(speciesDetails.baseHappiness), max: Constant.captureMaximum),
             possibleGender: makeGender(from: speciesDetails.genderRate),
             specials: makeSpecials(from: speciesDetails),
             evolutionUrl: speciesDetails.evolutionChain.url
@@ -14,10 +14,10 @@ enum PokemonDetailsFactory {
         guard genderRate >= 0 else { return .genderless }
         let genderRate = Double(genderRate)
         if genderRate > Constant.genderMaximum / 2 {
-            return .female(rate: rate(genderRate, Constant.genderMaximum))
+            return .female(rate: rate(value: genderRate, max: Constant.genderMaximum))
         } else {
             let male = Constant.genderMaximum - genderRate
-            return .male(rate: rate(male, Constant.genderMaximum))
+            return .male(rate: rate(value: male, max: Constant.genderMaximum))
         }
     }
 
@@ -35,7 +35,7 @@ enum PokemonDetailsFactory {
         return specials
     }
 
-    private static func rate(_ value: Double, _ max: Double) -> Int {
+    private static func rate(value: Double, max: Double) -> Int {
         Int(value / max * 100)
     }
 }

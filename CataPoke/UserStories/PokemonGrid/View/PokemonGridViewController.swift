@@ -114,7 +114,7 @@ final class PokemonGridViewController: UIViewController {
         view.backgroundColor = .green
         title = "POKéMON"
         setupView()
-        setupConstrains()
+        setupConstraints()
     }
 
     private func setupView() {
@@ -132,7 +132,7 @@ final class PokemonGridViewController: UIViewController {
         presenter.setup()
     }
 
-    private func setupConstrains() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

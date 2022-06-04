@@ -13,20 +13,20 @@ class ErrorGridFooterView: UICollectionViewCell, SelfDescriptive {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupView()
-        setupConstrains()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
-        setupConstrains()
+        setupConstraints()
     }
 
     private func setupView() {
         addSubview(imageView)
     }
 
-    private func setupConstrains() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: Space.quadruple),
             imageView.heightAnchor.constraint(equalToConstant: Space.quadruple),

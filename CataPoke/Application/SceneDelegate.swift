@@ -3,7 +3,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
-    private var container = DIContainer.create()
+    private let container = DIContainer.create()
     private var pokemonGridCoordinator: PokemonGridCoordinatorInput?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {

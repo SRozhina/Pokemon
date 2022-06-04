@@ -48,13 +48,13 @@ class TagView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        setupConstrains()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
-        setupConstrains()
+        setupConstraints()
     }
 
     private func setupView() {
@@ -62,7 +62,7 @@ class TagView: UIView {
         titleContainer.addSubview(titleLabel)
     }
 
-    private func setupConstrains() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(greaterThanOrEqualTo: titleContainer.topAnchor, constant: Space.single),
             titleLabel.leadingAnchor.constraint(equalTo: titleContainer.leadingAnchor, constant: Space.single),

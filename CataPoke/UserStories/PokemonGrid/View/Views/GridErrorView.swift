@@ -37,13 +37,13 @@ class GridErrorView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        setupConstrains()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
-        setupConstrains()
+        setupConstraints()
     }
 
     private func setupView() {
@@ -51,7 +51,7 @@ class GridErrorView: UIView {
         [imageView, reloadButton].forEach(stackView.addArrangedSubview)
     }
 
-    private func setupConstrains() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: -Space.quadruple),
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -Space.quadruple),

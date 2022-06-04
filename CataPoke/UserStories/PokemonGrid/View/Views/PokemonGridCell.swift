@@ -44,13 +44,13 @@ final class PokemonGridCell: UICollectionViewCell, SelfDescriptive {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        setupConstrains()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
-        setupConstrains()
+        setupConstraints()
     }
 
     private func setupView() {
@@ -67,7 +67,7 @@ final class PokemonGridCell: UICollectionViewCell, SelfDescriptive {
         layer.cornerRadius = Constants.cornerRadius
     }
 
-    private func setupConstrains() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),

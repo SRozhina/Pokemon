@@ -49,13 +49,13 @@ class CharacteristicView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        setupConstrains()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
-        setupConstrains()
+        setupConstraints()
     }
 
     private func setupView() {
@@ -66,7 +66,7 @@ class CharacteristicView: UIView {
         ].forEach(stackView.addArrangedSubview)
     }
 
-    private func setupConstrains() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),

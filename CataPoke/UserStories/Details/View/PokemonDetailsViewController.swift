@@ -42,7 +42,7 @@ class PokemonDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupConstrains()
+        setupConstraints()
     }
 
     private func setupView() {
@@ -59,7 +59,7 @@ class PokemonDetailsViewController: UIViewController {
         presenter.setup()
     }
 
-    private func setupConstrains() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             contentStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Space.double),
