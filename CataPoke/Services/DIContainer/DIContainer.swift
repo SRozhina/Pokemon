@@ -13,10 +13,13 @@ enum DIContainer {
 
         container
             .register(PokemonRequestHandling.self) { resolver in
+                guard let requestHandling = resolver.resolve(NetworkRequestHandling.self) else {
+                    fatalError("Cannot resolve NetworkRequestHandling")
+                }
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 return PokemonRequestHandler(
-                    requestHandling: resolver.resolve(NetworkRequestHandling.self)!,
+                    requestHandling: requestHandling,
                     decoder: decoder
                 )
             }
@@ -24,7 +27,10 @@ enum DIContainer {
 
         container
             .register(IPokemonsService.self) { resolver in
-                PokemonsService(requestHandler: resolver.resolve(PokemonRequestHandling.self)!)
+                guard let requestHandler = resolver.resolve(PokemonRequestHandling.self) else {
+                    fatalError("Cannot resolve PokemonRequestHandling")
+                }
+                return PokemonsService(requestHandler: requestHandler)
             }
             .inObjectScope(.container)
 
@@ -36,10 +42,13 @@ enum DIContainer {
 
         container
             .register(ImageLoading.self) { resolver in
-                ImageLoader(
-                    requestHandling: resolver.resolve(NetworkRequestHandling.self)!,
-                    cache: resolver.resolve(ImageCache.self)!
-                )
+                guard let requestHandling = resolver.resolve(NetworkRequestHandling.self) else {
+                    fatalError("Cannot resolve requestHandling")
+                }
+                guard let cache = resolver.resolve(ImageCache.self) else {
+                    fatalError("Cannot resolve ImageCache")
+                }
+                return ImageLoader(requestHandling: requestHandling, cache: cache)
             }
             .inObjectScope(.container)
 
@@ -53,15 +62,20 @@ enum DIContainer {
     private static func registerPokemonGrid(in container: Container) {
         container
             .register(IPokemonGridPresenter.self) { resolver in
-                PokemonGridPresenter(
-                    pokemonsService: resolver.resolve(IPokemonsService.self)!,
-                    imageLoader: resolver.resolve(ImageLoading.self)!
-                )
+                guard let pokemonsService = resolver.resolve(IPokemonsService.self) else {
+                    fatalError("Cannot resolve IPokemonsService")
+                }
+                guard let imageLoader = resolver.resolve(ImageLoading.self) else {
+                    fatalError("Cannot resolve ImageLoading")
+                }
+                return PokemonGridPresenter(pokemonsService: pokemonsService, imageLoader: imageLoader)
             }
 
         container
             .register(IPokemonGridView.self) { resolver in
-                let presenter = resolver.resolve(IPokemonGridPresenter.self)!
+                guard let presenter = resolver.resolve(IPokemonGridPresenter.self) else {
+                    fatalError("Cannot resolve IPokemonGridPresenter")
+                }
                 let view = PokemonGridViewController(presenter: presenter)
                 presenter.view = view
                 return view
@@ -71,16 +85,20 @@ enum DIContainer {
     private static func registerPokemonDetails(in container: Container) {
         container
             .register(IPokemonDetailsPresenter.self) { (resolver, pokemon: Pokemon) in
-                PokemonDetailsPresenter(
-                    pokemon: pokemon,
-                    pokemonsService: resolver.resolve(IPokemonsService.self)!,
-                    imageLoader: resolver.resolve(ImageLoading.self)!
-                )
+                guard let pokemonsService = resolver.resolve(IPokemonsService.self) else {
+                    fatalError("Cannot resolve IPokemonsService")
+                }
+                guard let imageLoader = resolver.resolve(ImageLoading.self) else {
+                    fatalError("Cannot resolve ImageLoading")
+                }
+                return PokemonDetailsPresenter(pokemon: pokemon, pokemonsService: pokemonsService, imageLoader: imageLoader)
             }
 
         container
             .register(IPokemonDetailsView.self) { (resolver, pokemon: Pokemon) in
-                let presenter = resolver.resolve(IPokemonDetailsPresenter.self, argument: pokemon)!
+                guard let presenter = resolver.resolve(IPokemonDetailsPresenter.self, argument: pokemon) else {
+                    fatalError("Cannot resolve IPokemonDetailsPresenter")
+                }
                 let view = PokemonDetailsViewController(presenter: presenter)
                 presenter.view = view
                 return view
@@ -90,16 +108,20 @@ enum DIContainer {
     private static func registerPokemonEvolutionGrid(in container: Container) {
         container
             .register(IPokemonEvolutionGridPresenter.self) { (resolver, details: PokemonDetails) in
-                PokemonEvolutionGridPresenter(
-                    details: details,
-                    pokemonsService: resolver.resolve(IPokemonsService.self)!,
-                    imageLoader: resolver.resolve(ImageLoading.self)!
-                )
+                guard let pokemonsService = resolver.resolve(IPokemonsService.self) else {
+                    fatalError("Cannot resolve IPokemonsService")
+                }
+                guard let imageLoader = resolver.resolve(ImageLoading.self) else {
+                    fatalError("Cannot resolve ImageLoading")
+                }
+                return PokemonEvolutionGridPresenter(details: details, pokemonsService: pokemonsService, imageLoader: imageLoader)
             }
 
         container
             .register(IPokemonEvolutionGridView.self) { (resolver, details: PokemonDetails) in
-                let presenter = resolver.resolve(IPokemonEvolutionGridPresenter.self, argument: details)!
+                guard let presenter = resolver.resolve(IPokemonEvolutionGridPresenter.self, argument: details) else {
+                    fatalError("Cannot resolve IPokemonEvolutionGridPresenter")
+                }
                 let view = PokemonEvolutionGridViewController(presenter: presenter)
                 presenter.view = view
                 return view

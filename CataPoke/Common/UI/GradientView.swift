@@ -6,8 +6,10 @@ final class GradientView: UIView {
     }
 
     private var gradientLayer: CAGradientLayer {
-        // swiftlint:disable:next force_cast
-        layer as! CAGradientLayer
+        guard let gradient = layer as? CAGradientLayer else {
+            fatalError("Cannot typecast layer")
+        }
+        return gradient
     }
 
     var colors: [UIColor] = [] {
