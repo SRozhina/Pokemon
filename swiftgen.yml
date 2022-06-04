@@ -5,5 +5,4 @@ strings:
     output: CataPoke/Resources/Localization/Localization.swift
     params:
         enumName: Localization
-        publicAccess: 1
         noComments: 0
