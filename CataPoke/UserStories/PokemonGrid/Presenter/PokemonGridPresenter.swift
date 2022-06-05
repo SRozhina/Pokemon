@@ -15,7 +15,6 @@ class PokemonGridPresenter {
     private var pokemons: [Pokemon] = []
     private var viewModels: [PokemonGridViewModel] = []
     private var total = 0
-    private var images: [URL: UIImage] = [:]
     private var loadingImages: Set<URL> = []
     private var isLoading = false
 
@@ -64,10 +63,10 @@ class PokemonGridPresenter {
 
     private func handlePokemonPage(_ page: PokemonPage) {
         total = page.total
-        let pokemons = page.pokemons.map { [weak self] in $0.with(image: self?.images[$0.imageUrl]) }
+        let pokemons = page.pokemons
         pokemons.forEach(loadImageIfNeeded)
         self.pokemons.append(contentsOf: pokemons)
-        viewModels.append(contentsOf: pokemons.map(PokemonGridViewModelFactory.makeViewModel))
+        viewModels.append(contentsOf: pokemons.map { PokemonGridViewModelFactory.makeViewModel($0) })
     }
 
     private func initialLoading() {
@@ -92,7 +91,7 @@ class PokemonGridPresenter {
 
     private func loadImageIfNeeded(pokemon: Pokemon) {
         let url = pokemon.imageUrl
-        guard !images.keys.contains(url), !loadingImages.contains(url) else { return }
+        guard !loadingImages.contains(url) else { return }
         loadingImages.insert(url)
 
         imageLoader.loadImage(from: url)
@@ -101,12 +100,10 @@ class PokemonGridPresenter {
             .handleEvents(receiveOutput: { [weak self] in
                 guard let self = self,
                       let image = $0,
-                      let index = self.pokemons.firstIndex(where: { $0.name == pokemon.name })
+                      let index = self.pokemons.firstIndex(where: { $0.imageUrl == pokemon.imageUrl })
                 else { return }
                 self.loadingImages.remove(url)
-                self.images[url] = image
-                self.pokemons[index] = pokemon.with(image: image)
-                self.viewModels[index] = .init(name: pokemon.name, image: image)
+                self.viewModels[index] = PokemonGridViewModelFactory.updateViewModel(self.viewModels[index], with: image)
             })
             .receive(on: DispatchQueue.main)
             .sink(

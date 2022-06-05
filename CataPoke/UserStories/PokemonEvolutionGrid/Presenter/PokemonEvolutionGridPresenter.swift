@@ -29,7 +29,7 @@ class PokemonEvolutionGridPresenter {
     private func handlePokemons(_ pokemons: [Pokemon]) {
         pokemons.forEach(loadImage)
         self.pokemons = pokemons
-        viewModels = pokemons.map(PokemonGridViewModelFactory.makeViewModel)
+        viewModels = pokemons.map { PokemonGridViewModelFactory.makeViewModel($0) }
     }
 
     private func loadPokemons() {
@@ -65,8 +65,7 @@ class PokemonEvolutionGridPresenter {
                       let image = $0,
                       let index = self.pokemons.firstIndex(where: { $0.name == pokemon.name })
                 else { return }
-                self.pokemons[index] = pokemon.with(image: image)
-                self.viewModels[index] = .init(name: pokemon.name, image: image)
+                self.viewModels[index] = PokemonGridViewModelFactory.updateViewModel(self.viewModels[index], with: image)
             })
             .receive(on: DispatchQueue.main)
             .sink(

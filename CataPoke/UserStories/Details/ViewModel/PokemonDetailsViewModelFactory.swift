@@ -6,18 +6,36 @@ enum PokemonDetailsViewModelFactory {
     static func makeViewModel(_ pokemon: Pokemon) -> PokemonDetailsViewModel {
         PokemonDetailsViewModel(
             name: pokemon.name,
-            image: pokemon.image ?? placeholder,
+            image: placeholder,
             specials: [],
             characteristics: []
         )
     }
 
-    static func makeViewModel(_ details: PokemonDetails, image: UIImage?) -> PokemonDetailsViewModel {
-        PokemonDetailsViewModel(
-            name: details.name,
-            image: image ?? placeholder,
-            specials: details.specials.map(\.description),
-            characteristics: makeCharacteristics(details)
+    static func updateViewModel(_ viewModel: PokemonDetailsViewModel, with specials: [PokemonDetails.Special]) -> PokemonDetailsViewModel {
+        .init(
+            name: viewModel.name,
+            image: viewModel.image,
+            specials: specials.map(\.description),
+            characteristics: viewModel.characteristics
+        )
+    }
+
+    static func updateViewModel(_ viewModel: PokemonDetailsViewModel, with characteristics: PokemonDetails) -> PokemonDetailsViewModel {
+        .init(
+            name: viewModel.name,
+            image: viewModel.image,
+            specials: viewModel.specials,
+            characteristics: makeCharacteristics(characteristics)
+        )
+    }
+
+    static func updateViewModel(_ viewModel: PokemonDetailsViewModel, with image: UIImage) -> PokemonDetailsViewModel {
+        .init(
+            name: viewModel.name,
+            image: image,
+            specials: viewModel.specials,
+            characteristics: viewModel.characteristics
         )
     }
 

@@ -11,6 +11,8 @@ class PokemonDetailsPresenter {
     private var pokemon: Pokemon
     private var subscriptions = Set<AnyCancellable>()
 
+    private var viewModel: PokemonDetailsViewModel
+
     init(
         pokemon: Pokemon,
         pokemonsService: IPokemonsService,
@@ -19,6 +21,7 @@ class PokemonDetailsPresenter {
         self.pokemon = pokemon
         self.pokemonsService = pokemonsService
         self.imageLoader = imageLoader
+        self.viewModel = PokemonDetailsViewModelFactory.makeViewModel(pokemon)
     }
 
     private func loadImage() {
@@ -27,11 +30,10 @@ class PokemonDetailsPresenter {
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in },
-                receiveValue: { [weak self] image in
-                    guard let self = self else { return }
-                    self.pokemon = self.pokemon.with(image: image)
-                    let viewModel = PokemonDetailsViewModelFactory.makeViewModel(self.pokemon)
-                    self.view?.set(viewModel: viewModel)
+                receiveValue: { [weak self] in
+                    guard let self = self, let image = $0 else { return }
+                    self.viewModel = PokemonDetailsViewModelFactory.updateViewModel(self.viewModel, with: image)
+                    self.view?.set(viewModel: self.viewModel)
                 })
             .store(in: &subscriptions)
     }
@@ -39,7 +41,6 @@ class PokemonDetailsPresenter {
 
 extension PokemonDetailsPresenter: IPokemonDetailsPresenter {
     func setup() {
-        let viewModel = PokemonDetailsViewModelFactory.makeViewModel(pokemon)
         view?.set(viewModel: viewModel)
 
         pokemonsService.fetchPokemonDetails(url: pokemon.detailsUrl)
@@ -50,14 +51,13 @@ extension PokemonDetailsPresenter: IPokemonDetailsPresenter {
                 receiveValue: { [weak self] details in
                     guard let self = self else { return }
                     self.moduleOutput?.pokemonDetailsModule(self, didFetchPokemonDetails: details)
-                    let viewModel = PokemonDetailsViewModelFactory.makeViewModel(details, image: self.pokemon.image)
-                    self.view?.set(viewModel: viewModel)
+                    self.viewModel = PokemonDetailsViewModelFactory.updateViewModel(self.viewModel, with: details.specials)
+                    self.viewModel = PokemonDetailsViewModelFactory.updateViewModel(self.viewModel, with: details)
+                    self.view?.set(viewModel: self.viewModel)
                 })
             .store(in: &subscriptions)
 
-        if pokemon.image == nil {
-            loadImage()
-        }
+        loadImage()
     }
 
     func showEvolutionGrid(_ grid: UIViewController) {

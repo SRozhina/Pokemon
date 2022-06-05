@@ -4,7 +4,6 @@ enum PokemonFactory {
         species.map {
             Pokemon(
                 name: $0.name,
-                image: nil,
                 detailsUrl: $0.url,
                 imageUrl: PokemonImageUrlBuilder.makeUrl(forPokemonId: $0.url.lastPathComponent)
             )
