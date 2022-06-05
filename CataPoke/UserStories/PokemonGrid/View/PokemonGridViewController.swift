@@ -142,9 +142,10 @@ final class PokemonGridViewController: UIViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
             errorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            errorView.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor),
+            errorView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
             errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            errorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
 

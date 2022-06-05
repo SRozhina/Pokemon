@@ -45,8 +45,9 @@ class PokemonGridPresenter {
             )
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: {
-                    guard case .failure = $0 else { return }
+                receiveCompletion: { [weak self] in
+                    guard let self = self, case .failure = $0 else { return }
+                    self.view?.hideLoading()
                     errorHandler()
                 },
                 receiveValue: { [weak self] _ in
