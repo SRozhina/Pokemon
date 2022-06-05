@@ -111,7 +111,6 @@ final class PokemonGridViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
         title = "POKéMON"
         setupView()
         setupConstraints()
