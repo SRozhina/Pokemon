@@ -6,10 +6,18 @@ class PokemonDetailsViewController: UIViewController {
 
     private lazy var pokemonInfoView = PokemonInfoView()
 
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private lazy var contentStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
         view.spacing = Space.triple
+        view.layoutMargins = UIEdgeInsets(top: 0, left: Space.double, bottom: 0, right: Space.double)
+        view.isLayoutMarginsRelativeArrangement = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -19,7 +27,6 @@ class PokemonDetailsViewController: UIViewController {
         view.axis = .horizontal
         view.spacing = Space.single
         view.distribution = .fillEqually
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
@@ -49,7 +56,8 @@ class PokemonDetailsViewController: UIViewController {
         navigationItem.leftBarButtonItem = closeButton
 
         view.backgroundColor = UIColor.systemBackground
-        view.addSubview(contentStackView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentStackView)
 
         [
             pokemonInfoView,
@@ -61,10 +69,16 @@ class PokemonDetailsViewController: UIViewController {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            contentStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Space.double),
-            contentStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Space.double),
-            contentStackView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            contentStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentStackView.widthAnchor.constraint(equalTo: view.widthAnchor),
         ])
     }
 
