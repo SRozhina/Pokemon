@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4535B21D285C75A3007A1BFF /* StepAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535B21C285C75A3007A1BFF /* StepAction.swift */; };
+		4535B21F285C75D2007A1BFF /* AppStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535B21E285C75D2007A1BFF /* AppStep.swift */; };
 		4539615C282EF6AF009F7328 /* NetworkRequestHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615B282EF6AF009F7328 /* NetworkRequestHandling.swift */; };
 		4539615E282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615D282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift */; };
 		45396160282EF7E0009F7328 /* NetworkRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539615F282EF7E0009F7328 /* NetworkRequestError.swift */; };
@@ -92,6 +94,8 @@
 /* Begin PBXFileReference section */
 		089E16B748340A6506EF9F6C /* Pods_CataPokeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CataPokeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A0FA8537E0263804796F767 /* Pods-CataPokeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CataPokeTests.release.xcconfig"; path = "Target Support Files/Pods-CataPokeTests/Pods-CataPokeTests.release.xcconfig"; sourceTree = "<group>"; };
+		4535B21C285C75A3007A1BFF /* StepAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepAction.swift; sourceTree = "<group>"; };
+		4535B21E285C75D2007A1BFF /* AppStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStep.swift; sourceTree = "<group>"; };
 		4539615B282EF6AF009F7328 /* NetworkRequestHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestHandling.swift; sourceTree = "<group>"; };
 		4539615D282EF6D0009F7328 /* URLSessionNetworkRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkRequestHandler.swift; sourceTree = "<group>"; };
 		4539615F282EF7E0009F7328 /* NetworkRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestError.swift; sourceTree = "<group>"; };
@@ -197,6 +201,16 @@
 				089E16B748340A6506EF9F6C /* Pods_CataPokeTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4535B21B285C7593007A1BFF /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				45E2E34C282D3881009EBE33 /* Coordinator.swift */,
+				4535B21C285C75A3007A1BFF /* StepAction.swift */,
+				4535B21E285C75D2007A1BFF /* AppStep.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		4539615A282EF6A3009F7328 /* NetworkRequest */ = {
@@ -350,7 +364,6 @@
 			isa = PBXGroup;
 			children = (
 				45E2E375282D7253009EBE33 /* UI */,
-				45E2E34C282D3881009EBE33 /* Coordinator.swift */,
 				45E2E368282D6DBB009EBE33 /* Image.swift */,
 			);
 			path = Common;
@@ -532,6 +545,7 @@
 		CE4C9CA92820167200FEA589 /* CataPoke */ = {
 			isa = PBXGroup;
 			children = (
+				4535B21B285C7593007A1BFF /* Navigation */,
 				45E2E36A282D6DDE009EBE33 /* Models */,
 				45E2E34B282D3878009EBE33 /* Common */,
 				45E2E312282D142D009EBE33 /* Application */,
@@ -855,9 +869,11 @@
 				45E2E3B0282DBAE8009EBE33 /* PokemonDetailsViewModel.swift in Sources */,
 				CE9303C32822706E0057188E /* Species.swift in Sources */,
 				45E2E369282D6DBB009EBE33 /* Image.swift in Sources */,
+				4535B21D285C75A3007A1BFF /* StepAction.swift in Sources */,
 				45E2E380282D7302009EBE33 /* LoadingGridFooterView.swift in Sources */,
 				45E2E36C282D6DEB009EBE33 /* Pokemon.swift in Sources */,
 				45E2E343282D3738009EBE33 /* IPokemonGridView.swift in Sources */,
+				4535B21F285C75D2007A1BFF /* AppStep.swift in Sources */,
 				45E2E333282D31AB009EBE33 /* ImageCache.swift in Sources */,
 				45E2E3CB282E2CE0009EBE33 /* PokemonEvolutionGridPresenter.swift in Sources */,
 				45E2E3B8282DBE0C009EBE33 /* PokemonDetails.swift in Sources */,

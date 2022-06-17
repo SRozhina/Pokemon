@@ -1,10 +1,11 @@
 import Swinject
 import UIKit
 
-class PokemonDetailsCoordinator: Coordinator {
+final class PokemonDetailsCoordinator: Coordinator<AppStep> {
 
     private let container: Container
     private let pokemon: Pokemon
+
     private weak var output: PokemonDetailsCoordinatorOutput?
 
     private weak var pokemonDetailsModuleInput: PokemonDetailsModuleInput?
@@ -13,44 +14,57 @@ class PokemonDetailsCoordinator: Coordinator {
     init(
         container: Container,
         pokemon: Pokemon,
-        output: PokemonDetailsCoordinatorOutput?
+        output: PokemonDetailsCoordinatorOutput
     ) {
         self.container = container
         self.pokemon = pokemon
         self.output = output
+        super.init()
     }
 
-    override func makeInitialViewController() throws -> UIViewController {
+    @discardableResult
+    override func start() -> UIViewController? {
+        super.start()
+
         guard let view = container.resolve(IPokemonDetailsView.self, argument: pokemon),
               let viewController = view as? UIViewController
-        else {
-            throw PokemonDetailsModuleError.cannotBuildModule
-        }
+        else { return nil }
         pokemonDetailsModuleInput = view.presenter
         view.presenter.moduleOutput = self
-        let navigationController = UINavigationController(rootViewController: viewController)
-        viewControllers = [navigationController]
 
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [viewController]
+        self.navigationController = navigationController
         return navigationController
     }
 
-    private func openPokemon(_ pokemon: Pokemon) {
-        let coordinator = PokemonDetailsCoordinator(
-            container: container,
-            pokemon: pokemon,
-            output: self
-        )
-        pokemonDetailsCoordinator = coordinator
-        guard let viewController = try? coordinator.makeInitialViewController() else { return }
-        present(viewController)
+    override func navigate(to step: AppStep) -> StepAction {
+        switch step {
+        case let .pokemonDetails(pokemon):
+            let coordinator = PokemonDetailsCoordinator(
+                container: container,
+                pokemon: pokemon,
+                output: self
+            )
+            self.pokemonDetailsCoordinator = coordinator
+            guard let viewController = coordinator.start() else { return .none }
+            return .present(viewController, .automatic)
+
+        case .back:
+            return .dismiss
+
+        case .pokemonGrid:
+            return .none
+        }
     }
 }
 
 extension PokemonDetailsCoordinator: PokemonDetailsCoordinatorInput { }
 
 extension PokemonDetailsCoordinator: PokemonDetailsModuleOutput {
+
     func pokemonDetailsModule(_ module: PokemonDetailsModuleInput, didTapPokemon pokemon: Pokemon) {
-        openPokemon(pokemon)
+        step = .pokemonDetails(pokemon)
     }
 
     func pokemonDetailsModule(_ module: PokemonDetailsModuleInput, didFetchPokemonDetails details: PokemonDetails) {
@@ -62,20 +76,21 @@ extension PokemonDetailsCoordinator: PokemonDetailsModuleOutput {
     }
 
     func pokemonDetailsModuleDidClose(_ module: PokemonDetailsModuleInput) {
-        output?.pokemonDetailsCoordinatorDidClose(self)
+        step = .back
         pokemonDetailsModuleInput = nil
+        output?.pokemonDetailsCoordinatorDidClose(self)
     }
 }
 
 extension PokemonDetailsCoordinator: PokemonDetailsCoordinatorOutput {
     func pokemonDetailsCoordinatorDidClose(_ coordinator: PokemonDetailsCoordinatorInput) {
-        dismiss()
         pokemonDetailsCoordinator = nil
     }
 }
 
 extension PokemonDetailsCoordinator: PokemonEvolutionGridModuleOutput {
+
     func pokemonEvolutionGridModule(_ module: PokemonEvolutionGridModuleInput, didTapPokemon pokemon: Pokemon) {
-        openPokemon(pokemon)
+        step = .pokemonDetails(pokemon)
     }
 }

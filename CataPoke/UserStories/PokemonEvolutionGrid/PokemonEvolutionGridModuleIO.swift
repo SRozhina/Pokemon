@@ -7,5 +7,5 @@ enum PokemonEvolutionGridModuleError: Error {
 protocol PokemonEvolutionGridModuleInput { }
 
 protocol PokemonEvolutionGridModuleOutput: AnyObject {
-    func pokemonEvolutionGridModule(_ module: PokemonEvolutionGridModuleInput, didTapPokemon: Pokemon)
+    func pokemonEvolutionGridModule(_ module: PokemonEvolutionGridModuleInput, didTapPokemon pokemon: Pokemon)
 }
