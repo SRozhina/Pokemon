@@ -1,4 +1,4 @@
-protocol IPokemonGridPresenter: AnyObject, PokemonGridModuleInput {
+protocol IPokemonGridPresenter: PokemonGridModuleInput, EmptyViewControllerDelegate {
     var view: IPokemonGridView? { get set }
     var moduleOutput: PokemonGridModuleOutput? { get set }
 

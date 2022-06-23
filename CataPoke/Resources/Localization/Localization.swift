@@ -4,6 +4,8 @@ import Foundation
 enum Localization {
 
     enum Details {
+        /// At that moment we could not load this pokemon info. Try again later.
+        static let empty = localize("details.empty")
 
         enum Characteristics {
             /// Capture rate
@@ -38,6 +40,8 @@ enum Localization {
     }
 
     enum Grid {
+        /// At that moment we could not load pokemons. Try to reinstall the app.
+        static let empty = localize("grid.empty")
         /// Reload pokemons
         static let reload = localize("grid.reload")
         /// POKéMON

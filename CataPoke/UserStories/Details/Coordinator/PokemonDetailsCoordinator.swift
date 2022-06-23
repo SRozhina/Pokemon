@@ -1,10 +1,8 @@
-import Swinject
 import UIKit
 
 final class PokemonDetailsCoordinator: Coordinator<AppStep> {
 
-    private let container: Container
-    private let pokemon: Pokemon
+    private let module: PokemonDetailsModule
 
     private weak var output: PokemonDetailsCoordinatorOutput?
 
@@ -12,12 +10,10 @@ final class PokemonDetailsCoordinator: Coordinator<AppStep> {
     private var pokemonDetailsCoordinator: PokemonDetailsCoordinatorInput?
 
     init(
-        container: Container,
-        pokemon: Pokemon,
+        module: PokemonDetailsModule,
         output: PokemonDetailsCoordinatorOutput
     ) {
-        self.container = container
-        self.pokemon = pokemon
+        self.module = module
         self.output = output
         super.init()
     }
@@ -25,30 +21,19 @@ final class PokemonDetailsCoordinator: Coordinator<AppStep> {
     @discardableResult
     override func start() -> UIViewController? {
         super.start()
-
-        guard let view = container.resolve(IPokemonDetailsView.self, argument: pokemon),
-              let viewController = view as? UIViewController
-        else { return nil }
-        pokemonDetailsModuleInput = view.presenter
-        view.presenter.moduleOutput = self
+        module.set(output: self)
+        pokemonDetailsModuleInput = module.input
 
         let navigationController = UINavigationController()
-        navigationController.viewControllers = [viewController]
+        navigationController.viewControllers = [module.viewController]
         self.navigationController = navigationController
         return navigationController
     }
 
     override func navigate(to step: AppStep) -> StepAction {
         switch step {
-        case let .pokemonDetails(pokemon):
-            let coordinator = PokemonDetailsCoordinator(
-                container: container,
-                pokemon: pokemon,
-                output: self
-            )
-            self.pokemonDetailsCoordinator = coordinator
-            guard let viewController = coordinator.start() else { return .none }
-            return .present(viewController, .automatic)
+        case .pokemonDetails:
+            return .none
 
         case .back:
             return .dismiss
@@ -68,11 +53,9 @@ extension PokemonDetailsCoordinator: PokemonDetailsModuleOutput {
     }
 
     func pokemonDetailsModule(_ module: PokemonDetailsModuleInput, didFetchPokemonDetails details: PokemonDetails) {
-        guard let view = container.resolve(IPokemonEvolutionGridView.self, argument: details),
-              let viewController = view as? UIViewController
-        else { return }
-        view.presenter.moduleOutput = self
-        pokemonDetailsModuleInput?.showEvolutionGrid(viewController)
+        let evolutionGridModule = self.module.evolutionGridModule(details: details)
+        evolutionGridModule.set(output: self)
+        pokemonDetailsModuleInput?.showEvolutionGrid(evolutionGridModule.viewController)
     }
 
     func pokemonDetailsModuleDidClose(_ module: PokemonDetailsModuleInput) {

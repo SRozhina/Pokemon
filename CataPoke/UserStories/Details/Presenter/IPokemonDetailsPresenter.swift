@@ -1,4 +1,4 @@
-protocol IPokemonDetailsPresenter: PokemonDetailsModuleInput {
+protocol IPokemonDetailsPresenter: PokemonDetailsModuleInput, EmptyViewControllerDelegate {
     var view: IPokemonDetailsView? { get set }
     var moduleOutput: PokemonDetailsModuleOutput? { get set }
 

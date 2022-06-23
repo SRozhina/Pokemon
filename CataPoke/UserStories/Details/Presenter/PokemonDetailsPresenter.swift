@@ -68,3 +68,9 @@ extension PokemonDetailsPresenter: IPokemonDetailsPresenter {
         moduleOutput?.pokemonDetailsModuleDidClose(self)
     }
 }
+
+extension PokemonDetailsPresenter: EmptyViewControllerDelegate {
+    func emptyViewControllerDidClose(_ viewController: EmptyViewController) {
+        moduleOutput?.pokemonDetailsModuleDidClose(self)
+    }
+}

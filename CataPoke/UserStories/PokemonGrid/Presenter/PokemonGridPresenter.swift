@@ -153,6 +153,10 @@ extension PokemonGridPresenter: IPokemonGridPresenter {
     }
 }
 
+extension PokemonGridPresenter: EmptyViewControllerDelegate {
+    func emptyViewControllerDidClose(_ viewController: EmptyViewController) { }
+}
+
 private extension PokemonGridPresenter {
     enum Constants {
         static let pageSize = 40

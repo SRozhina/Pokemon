@@ -1,9 +1,8 @@
-import Swinject
 import UIKit
 
 final class PokemonGridCoordinator: Coordinator<AppStep> {
 
-    private let container: Container
+    private let module: PokemonGridModule
     private let appWindow: UIWindow
 
     private var pokemonDetailsCoordinator: PokemonDetailsCoordinatorInput?
@@ -11,11 +10,11 @@ final class PokemonGridCoordinator: Coordinator<AppStep> {
 
     init(
         scene: UIWindowScene,
-        container: Container,
+        module: PokemonGridModule,
         output: PokemonGridCoordinatorOutput
     ) {
         appWindow = UIWindow(windowScene: scene)
-        self.container = container
+        self.module = module
         self.output = output
         super.init()
     }
@@ -35,16 +34,12 @@ final class PokemonGridCoordinator: Coordinator<AppStep> {
     override func navigate(to step: AppStep) -> StepAction {
         switch step {
         case .pokemonGrid:
-            guard let view = container.resolve(IPokemonGridView.self),
-                  let viewController = view as? UIViewController
-            else { return .none }
-            view.presenter.moduleOutput = self
-            return .push(viewController)
+            module.set(output: self)
+            return .push(module.viewController)
 
         case let .pokemonDetails(pokemon):
             let coordinator = PokemonDetailsCoordinator(
-                container: container,
-                pokemon: pokemon,
+                module: module.detailsModule(pokemon: pokemon),
                 output: self
             )
             pokemonDetailsCoordinator = coordinator

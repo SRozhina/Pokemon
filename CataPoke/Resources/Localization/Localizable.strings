@@ -1,5 +1,6 @@
 "grid.title" = "POKéMON";
 "grid.reload" = "Reload pokemons";
+"grid.empty" = "At that moment we could not load pokemons. Try to reinstall the app.";
 
 "details.special.baby" = "baby";
 "details.special.legendary" = "legendary";
@@ -11,3 +12,4 @@
 "details.characteristics.gender.title" = "Gender";
 
 "details.evolution.title" = "Evolution chain";
+"details.empty" = "At that moment we could not load this pokemon info. Try again later.";
