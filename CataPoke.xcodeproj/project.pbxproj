@@ -16,7 +16,6 @@
 		45396172282EFD32009F7328 /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396171282EFD32009F7328 /* AutoMockable.generated.swift */; };
 		45396175282EFD56009F7328 /* CataPokeTestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396174282EFD56009F7328 /* CataPokeTestError.swift */; };
 		4595FDCE2861967E00E5CD2C /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4595FDCD2861967E00E5CD2C /* NeedleGenerated.swift */; };
-		4595FDD42861A9D100E5CD2C /* NeedleFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 4595FDD32861A9D100E5CD2C /* NeedleFoundation */; };
 		4595FDD62861AAAD00E5CD2C /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4595FDD52861AAAD00E5CD2C /* RootComponent.swift */; };
 		4595FDD92861AAF900E5CD2C /* PokemonGridComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4595FDD82861AAF900E5CD2C /* PokemonGridComponent.swift */; };
 		4595FDDB2861AB1D00E5CD2C /* PokemonGridDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4595FDDA2861AB1D00E5CD2C /* PokemonGridDependency.swift */; };
@@ -82,6 +81,7 @@
 		45FA612128649426000CB709 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA612028649426000CB709 /* UIViewController+.swift */; };
 		45FA61242865B00F000CB709 /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA61232865B00F000CB709 /* NeedleGenerated.swift */; };
 		45FA61272865B26B000CB709 /* ImageLoaderTestsDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA61262865B26B000CB709 /* ImageLoaderTestsDependencies.swift */; };
+		45FA612A2865B906000CB709 /* NeedleFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 45FA61292865B906000CB709 /* NeedleFoundation */; };
 		CE4C9CAB2820167200FEA589 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C9CAA2820167200FEA589 /* AppDelegate.swift */; };
 		CE4C9CAD2820167200FEA589 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C9CAC2820167200FEA589 /* SceneDelegate.swift */; };
 		CE4C9CB42820167300FEA589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4C9CB32820167300FEA589 /* Assets.xcassets */; };
@@ -224,7 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4595FDD42861A9D100E5CD2C /* NeedleFoundation in Frameworks */,
+				45FA612A2865B906000CB709 /* NeedleFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,7 +726,7 @@
 			);
 			name = CataPoke;
 			packageProductDependencies = (
-				4595FDD32861A9D100E5CD2C /* NeedleFoundation */,
+				45FA61292865B906000CB709 /* NeedleFoundation */,
 			);
 			productName = CataPoke;
 			productReference = CE4C9CA72820167200FEA589 /* CataPoke.app */;
@@ -761,7 +761,7 @@
 			);
 			mainGroup = CE4C9C9E2820167200FEA589;
 			packageReferences = (
-				4595FDD22861A9D100E5CD2C /* XCRemoteSwiftPackageReference "needle" */,
+				45FA61282865B906000CB709 /* XCRemoteSwiftPackageReference "needle" */,
 			);
 			productRefGroup = CE4C9CA82820167200FEA589 /* Products */;
 			projectDirPath = "";
@@ -1253,7 +1253,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.catawiki.CataPoke;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Pokemon.CataPoke;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1280,7 +1280,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.catawiki.CataPoke;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Pokemon.CataPoke;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1321,7 +1321,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4595FDD22861A9D100E5CD2C /* XCRemoteSwiftPackageReference "needle" */ = {
+		45FA61282865B906000CB709 /* XCRemoteSwiftPackageReference "needle" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/uber/needle.git";
 			requirement = {
@@ -1332,9 +1332,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4595FDD32861A9D100E5CD2C /* NeedleFoundation */ = {
+		45FA61292865B906000CB709 /* NeedleFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4595FDD22861A9D100E5CD2C /* XCRemoteSwiftPackageReference "needle" */;
+			package = 45FA61282865B906000CB709 /* XCRemoteSwiftPackageReference "needle" */;
 			productName = NeedleFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */

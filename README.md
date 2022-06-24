@@ -1,10 +1,4 @@
-# Catawiki iOS Assignment
-
-Welcome to the Catawiki iOS developer candidate assignment.
-
-Thanks for your interest in the Catawiki Team. You are just a couple of steps away from joining a world-class team of passionate professionals.
-
-The big part of the items we offer at auctions is collectibles. One of the most famous collectables are… **Pokémons**! Let’s catch’em all!
+# Pokemon list app
 
 In this task, it comes down to presenting your skills, so try to focus on quality rather than quantity of code. We don’t require you to reinvent the wheel, so you can use any library you find suitable. You can also apply any building scripts or software best practices to speed up the development. When working on the project please make use of the version control system (we would like to see the history of commits).
 
@@ -41,15 +35,3 @@ Use the public *Poké-API*: https://pokeapi.co
 * The use of helper dependencies is ok, but the core should be your own code.
 * Use the most recently released version of Swift.
 * Focus on iPhone only, but make sure it works properly for all supported device types & orientations.
-
-## What will be assessed?
-1. Functionality: the application has the functions described in the job and does not crash. Errors are handled properly *(weight 2)*
-2. Quality of code: the code does not contain any design faults, is written in accordance with the conventions and standards, and is easy to read *(weight 3)*
-3. Application Architecture: The application can be easily maintained and extended, there are clear layers visible, etc. *(weight 3)*
-4. User Experience & UI Design: application is clear and easy to use (but no need to create some super-beautiful graphics, it’s more about the (auto-)layout and chosen components) *(weight 1.5)*
-5. Library Selection: Selected 3rd party libraries (if any) should have a reasonable use case, and be of high quality *(weight 0.5)*
-
-## Bonus
-Try to approach this like you would to a production application. Let it support typical situations unique to mobile applications, such as lack of network coverage, etc.
-
-If you have some time to spend beyond the assessment requirements, feel free to improve/extend up the app in any way: create an attractive UI, animations, some new functionality, unit tests, etc.
