@@ -1,25 +1,24 @@
 @testable import CataPoke
 import Combine
-import Swinject
+import NeedleFoundation
 import XCTest
 
 class ImageLoaderTests: XCTestCase {
-    var container: Container!
-
     var imageCacheMock: ImageCacheMock!
     var requestHandlingMock: NetworkRequestHandlingMock!
+    var dependencies: ImageLoaderTestsDependencies!
     var imageLoader: ImageLoading!
 
     private var subscriptions = Set<AnyCancellable>()
 
     override func setUp() {
         super.setUp()
-        container = DIContainer.create()
+        registerProviderFactories()
+        dependencies = ImageLoaderTestsDependenciesImpl()
 
-        setupContainer()
-        imageCacheMock = container.resolve(ImageCache.self) as? ImageCacheMock
-        requestHandlingMock = container.resolve(NetworkRequestHandling.self) as? NetworkRequestHandlingMock
-        imageLoader = container.resolve(ImageLoading.self)!
+        imageCacheMock = dependencies.imageCache
+        requestHandlingMock = dependencies.networkRequestHandler
+        imageLoader = ImageLoader(requestHandling: requestHandlingMock, cache: imageCacheMock)
     }
 
     func testLoadingImageSuccess() throws {
@@ -105,15 +104,6 @@ class ImageLoaderTests: XCTestCase {
             .store(in: &subscriptions)
 
         wait(for: [expectation], timeout: 5)
-    }
-}
-
-extension ImageLoaderTests {
-
-    private func setupContainer() {
-        container
-            .registerImageCache()
-            .registerRequestHandling()
     }
 }
 

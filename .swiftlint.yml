@@ -116,6 +116,7 @@ excluded:
   - Pods
   - CataPokeTests/Mocks/AutoMockable.generated.swift
   - CataPoke/Services/DI/NeedleGenerated.swift
+  - CataPokeTests/Mocks/NeedleGenerated.swift
 
 line_length:
   warning: 150

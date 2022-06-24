@@ -4,13 +4,6 @@ target 'CataPoke' do
   pod 'SwiftLint'
   pod 'SwiftGen'
   pod 'Sourcery'
-  pod 'Swinject'
-end
-
-target 'CataPokeTests' do
-  use_frameworks!
-  
-  pod 'Swinject'
 end
 
 post_install do |installer|

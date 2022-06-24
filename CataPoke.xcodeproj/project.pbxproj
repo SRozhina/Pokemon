@@ -15,7 +15,6 @@
 		45396168282EF81A009F7328 /* ImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396167282EF81A009F7328 /* ImageLoaderTests.swift */; };
 		45396172282EFD32009F7328 /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396171282EFD32009F7328 /* AutoMockable.generated.swift */; };
 		45396175282EFD56009F7328 /* CataPokeTestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396174282EFD56009F7328 /* CataPokeTestError.swift */; };
-		45396177282EFD7A009F7328 /* Container+registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45396176282EFD7A009F7328 /* Container+registration.swift */; };
 		4595FDCE2861967E00E5CD2C /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4595FDCD2861967E00E5CD2C /* NeedleGenerated.swift */; };
 		4595FDD42861A9D100E5CD2C /* NeedleFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 4595FDD32861A9D100E5CD2C /* NeedleFoundation */; };
 		4595FDD62861AAAD00E5CD2C /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4595FDD52861AAAD00E5CD2C /* RootComponent.swift */; };
@@ -81,6 +80,8 @@
 		45E2E3D0282E2D2E009EBE33 /* PokemonEvolutionGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2E3CF282E2D2E009EBE33 /* PokemonEvolutionGridViewController.swift */; };
 		45FA611E28649077000CB709 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA611D28649077000CB709 /* EmptyViewController.swift */; };
 		45FA612128649426000CB709 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA612028649426000CB709 /* UIViewController+.swift */; };
+		45FA61242865B00F000CB709 /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA61232865B00F000CB709 /* NeedleGenerated.swift */; };
+		45FA61272865B26B000CB709 /* ImageLoaderTestsDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA61262865B26B000CB709 /* ImageLoaderTestsDependencies.swift */; };
 		CE4C9CAB2820167200FEA589 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C9CAA2820167200FEA589 /* AppDelegate.swift */; };
 		CE4C9CAD2820167200FEA589 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C9CAC2820167200FEA589 /* SceneDelegate.swift */; };
 		CE4C9CB42820167300FEA589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4C9CB32820167300FEA589 /* Assets.xcassets */; };
@@ -127,7 +128,6 @@
 		45396167282EF81A009F7328 /* ImageLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderTests.swift; sourceTree = "<group>"; };
 		45396171282EFD32009F7328 /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
 		45396174282EFD56009F7328 /* CataPokeTestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CataPokeTestError.swift; sourceTree = "<group>"; };
-		45396176282EFD7A009F7328 /* Container+registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+registration.swift"; sourceTree = "<group>"; };
 		4595FDCD2861967E00E5CD2C /* NeedleGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedleGenerated.swift; sourceTree = "<group>"; };
 		4595FDD52861AAAD00E5CD2C /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
 		4595FDD82861AAF900E5CD2C /* PokemonGridComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonGridComponent.swift; sourceTree = "<group>"; };
@@ -192,6 +192,8 @@
 		45E2E3CF282E2D2E009EBE33 /* PokemonEvolutionGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonEvolutionGridViewController.swift; sourceTree = "<group>"; };
 		45FA611D28649077000CB709 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 		45FA612028649426000CB709 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		45FA61232865B00F000CB709 /* NeedleGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedleGenerated.swift; sourceTree = "<group>"; };
+		45FA61262865B26B000CB709 /* ImageLoaderTestsDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderTestsDependencies.swift; sourceTree = "<group>"; };
 		4F81FAFB64F154D1591FB9AC /* Pods-CataPoke.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CataPoke.debug.xcconfig"; path = "Target Support Files/Pods-CataPoke/Pods-CataPoke.debug.xcconfig"; sourceTree = "<group>"; };
 		7421B87C21C9F8C132AEE9D7 /* Pods-CataPokeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CataPokeTests.debug.xcconfig"; path = "Target Support Files/Pods-CataPokeTests/Pods-CataPokeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AEFDC978EC37B059911549D5 /* Pods-CataPoke.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CataPoke.release.xcconfig"; path = "Target Support Files/Pods-CataPoke/Pods-CataPoke.release.xcconfig"; sourceTree = "<group>"; };
@@ -269,6 +271,8 @@
 		45396170282EFD32009F7328 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				45FA61252865B25C000CB709 /* Dependencies */,
+				45FA61232865B00F000CB709 /* NeedleGenerated.swift */,
 				45396171282EFD32009F7328 /* AutoMockable.generated.swift */,
 			);
 			path = Mocks;
@@ -278,7 +282,6 @@
 			isa = PBXGroup;
 			children = (
 				45396174282EFD56009F7328 /* CataPokeTestError.swift */,
-				45396176282EFD7A009F7328 /* Container+registration.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -580,6 +583,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		45FA61252865B25C000CB709 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				45FA61262865B26B000CB709 /* ImageLoaderTestsDependencies.swift */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
 		AA8138E3C65F139DA45924C0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -677,6 +688,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4539616B282EF81A009F7328 /* Build configuration list for PBXNativeTarget "CataPokeTests" */;
 			buildPhases = (
+				45FA61222865AF48000CB709 /* Needle */,
 				C49D85F84AE143EAED2A3EEB /* [CP] Check Pods Manifest.lock */,
 				45396161282EF81A009F7328 /* Sources */,
 				45396162282EF81A009F7328 /* Frameworks */,
@@ -854,6 +866,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftGen/bin/swiftgen\" config run --config swiftgen.yml\n";
 		};
+		45FA61222865AF48000CB709 /* Needle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Needle;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "needle generate CataPokeTests/Mocks/NeedleGenerated.swift CataPokeTests/\n";
+		};
 		55CE7C8C81E463716341826A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -939,10 +969,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45396177282EFD7A009F7328 /* Container+registration.swift in Sources */,
 				45396168282EF81A009F7328 /* ImageLoaderTests.swift in Sources */,
 				45396172282EFD32009F7328 /* AutoMockable.generated.swift in Sources */,
+				45FA61272865B26B000CB709 /* ImageLoaderTestsDependencies.swift in Sources */,
 				45396175282EFD56009F7328 /* CataPokeTestError.swift in Sources */,
+				45FA61242865B00F000CB709 /* NeedleGenerated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
